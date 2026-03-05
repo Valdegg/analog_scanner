@@ -9,14 +9,14 @@ Requirements for Dashboard Filters milestone. Each maps to roadmap phases.
 
 ### Filtering
 
-- [ ] **FILT-01**: User can filter listings by device category (synthesizer, keyboard, drum machine, drum synth, effect, sampler, microphone)
-- [ ] **FILT-02**: User can filter listings by brand (populated dynamically from scan results)
-- [ ] **FILT-03**: User can filter listings by minimum combined opportunity score (rarity + liquidity + mispricing, range 3-15)
-- [ ] **FILT-04**: User can search listings by text (matches device name and listing title)
+- [x] **FILT-01**: User can filter listings by device category (synthesizer, keyboard, drum machine, drum synth, effect, sampler, microphone)
+- [x] **FILT-02**: User can filter listings by brand (populated dynamically from scan results)
+- [x] **FILT-03**: User can filter listings by minimum combined opportunity score (rarity + liquidity + mispricing, range 3-15)
+- [x] **FILT-04**: User can search listings by text (matches device name and listing title)
 
 ### Data Integration
 
-- [ ] **DATA-01**: web.py loads schema.json and merges opportunity scores into scan data at render time
+- [x] **DATA-01**: web.py loads schema.json and merges opportunity scores into scan data at render time
 
 ### Cross-Cutting
 
@@ -50,11 +50,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FILT-01 | Phase 4 | Pending |
-| FILT-02 | Phase 4 | Pending |
-| FILT-03 | Phase 4 | Pending |
-| FILT-04 | Phase 4 | Pending |
-| DATA-01 | Phase 4 | Pending |
+| FILT-01 | Phase 4 | Complete |
+| FILT-02 | Phase 4 | Complete |
+| FILT-03 | Phase 4 | Complete |
+| FILT-04 | Phase 4 | Complete |
+| DATA-01 | Phase 4 | Complete |
 | XCUT-01 | Phase 5 | Pending |
 | XCUT-02 | Phase 5 | Pending |
 
