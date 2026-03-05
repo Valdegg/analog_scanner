@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Dashboard Filters
-status: in_progress
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-03-05T11:30:00Z"
+status: completed
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-03-05T11:33:40.914Z"
 last_activity: 2026-03-05 -- Completed 01-01 query pipeline & search scraping
 progress:
   total_phases: 5
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 3
-  completed_plans: 2
-  percent: 100
+  completed_plans: 3
+  percent: 67
 ---
 
 # Project State
@@ -51,6 +51,7 @@ Progress: [███████░░░] 67%
 - Trend: stable
 
 *Updated after each plan completion*
+| Phase 01 P02 | 1 min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,8 @@ Recent decisions affecting current work:
 - [Phase 04]: Opportunity score = sum of rarity + liquidity + mispricing (range 3-15, 0 for unknown)
 - [Phase 01]: 172 unique queries from 164 mislabels + 10 German generic terms
 - [Phase 01]: Generic search URL uses no min price, 500 EUR max cap
+- [Phase 01]: In-browser fetch+FileReader for image base64 encoding avoids separate HTTP client
+- [Phase 01]: Multi-selector CSS fallbacks for defensive detail page scraping
 
 ### Pending Todos
 
@@ -77,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-05T11:30:00Z
-Stopped at: Completed 01-01-PLAN.md
-Resume file: .planning/phases/01-query-pipeline-scraping/01-01-SUMMARY.md
+Last session: 2026-03-05T11:33:40.912Z
+Stopped at: Completed 01-02-PLAN.md
+Resume file: None
