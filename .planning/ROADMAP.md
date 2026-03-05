@@ -42,11 +42,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The scanner navigates to each listing's detail page and extracts high-res images and full description text
   4. Duplicate listings across queries are detected and analyzed only once
   5. Listings older than MAX_LISTING_AGE_DAYS are filtered out
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Query generation, search scraping, deduplication, and age filtering
+- [ ] 01-02-PLAN.md -- Detail page scraping with hero image base64 and full description extraction
 
 ### Phase 2: LLM Analysis & Results
 **Goal**: Each scraped listing is analyzed by an LLM with vision to identify the actual device, and results are saved as structured JSON sorted by value
@@ -115,7 +115,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 1. Query Pipeline & Scraping | v1.0 | 0/0 | Not started | - |
+| 1. Query Pipeline & Scraping | v1.0 | 0/2 | Planning complete | - |
 | 2. LLM Analysis & Results | v1.0 | 0/0 | Not started | - |
 | 3. Validation Experiment | v1.0 | 0/0 | Not started | - |
 | 4. Data & Filter Controls | v1.1 | 0/1 | Planning complete | - |
