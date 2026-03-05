@@ -1,7 +1,7 @@
 # Requirements: Analog Scanner
 
 **Defined:** 2026-03-05
-**Core Value:** Surface hidden gems — listings where a valuable vintage device is sold under a vague generic title at a low price
+**Core Value:** Surface hidden gems -- listings where a valuable vintage device is sold under a vague generic title at a low price
 
 ## v1.1 Requirements
 
@@ -32,7 +32,7 @@ Requirements for Dashboard Filters milestone. Each maps to roadmap phases.
 - **SCAN-03**: LLM analysis via OpenRouter with vision to identify devices from images and descriptions
 - **SCAN-04**: Structured JSON output from LLM: identified device name, confidence, reasoning, estimated value
 - **SCAN-05**: Separate results file for generic scan output
-- **SCAN-06**: Price cap at 500€ for generic queries
+- **SCAN-06**: Price cap at 500 EUR for generic queries
 - **SCAN-07**: German-language queries alongside English
 
 ## Out of Scope
@@ -50,19 +50,19 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FILT-01 | — | Pending |
-| FILT-02 | — | Pending |
-| FILT-03 | — | Pending |
-| FILT-04 | — | Pending |
-| DATA-01 | — | Pending |
-| XCUT-01 | — | Pending |
-| XCUT-02 | — | Pending |
+| FILT-01 | Phase 4 | Pending |
+| FILT-02 | Phase 4 | Pending |
+| FILT-03 | Phase 4 | Pending |
+| FILT-04 | Phase 4 | Pending |
+| DATA-01 | Phase 4 | Pending |
+| XCUT-01 | Phase 5 | Pending |
+| XCUT-02 | Phase 5 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 7 total
-- Mapped to phases: 0
-- Unmapped: 7 ⚠️
+- Mapped to phases: 7
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-05*
-*Last updated: 2026-03-05 after initial definition*
+*Last updated: 2026-03-05 after v1.1 roadmap creation*

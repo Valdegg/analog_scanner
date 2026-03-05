@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-03-05)
 
 **Core value:** Surface hidden gems -- listings where a valuable vintage device is sold under a vague generic title at a low price
-**Current focus:** v1.1 Dashboard Filters
+**Current focus:** Phase 4: Data & Filter Controls (v1.1 Dashboard Filters)
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-03-05 — Milestone v1.1 started
+Phase: 4 of 5 (Data & Filter Controls)
+Plan: 0 of 0 in current phase
+Status: Ready to plan
+Last activity: 2026-03-05 -- v1.1 roadmap created, phases 4-5 added
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -42,9 +42,9 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- [v1.1]: Merge opportunity scores in web.py at render time (not in scanner) -- works with existing scan results
-- [v1.1]: Filters apply to both Best Deals and By Device views
-- [v1.1]: Combined opportunity score = sum of rarity + liquidity + mispricing (3-15 range)
+- [Roadmap v1.1]: Merge opportunity scores in web.py at render time -- no scanner changes needed
+- [Roadmap v1.1]: Two phases for filters -- data+controls first, cross-view integration second
+- [Roadmap v1.1]: Coarse granularity, 2 phases for 7 requirements
 
 ### Pending Todos
 
@@ -57,5 +57,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-05
-Stopped at: Defining requirements for v1.1
+Stopped at: v1.1 roadmap created, ready to plan Phase 4
 Resume file: None
