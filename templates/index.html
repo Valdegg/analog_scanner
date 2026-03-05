@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deal Scanner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0018;
+    --surface: #120826;
+    --surface2: #1a0e35;
+    --border: #2a1650;
+    --glow-border: #6b21a8;
+    --text: #e0d6f0;
+    --text2: #8a7baa;
+    --neon-pink: #ff2d95;
+    --neon-cyan: #00f0ff;
+    --neon-green: #39ff14;
+    --neon-amber: #ffd700;
+    --steal: #ff2d95;
+    --steal-bg: rgba(255,45,149,.1);
+    --steal-glow: rgba(255,45,149,.4);
+    --good: #39ff14;
+    --good-bg: rgba(57,255,20,.08);
+    --good-glow: rgba(57,255,20,.4);
+    --market: #00f0ff;
+    --market-bg: rgba(0,240,255,.07);
+    --vb: #ffd700;
+    --font-body: 'Space Mono', monospace;
+    --font-display: 'Orbitron', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    position: relative;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,.08) 2px,
+      rgba(0,0,0,.08) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a0533 0%, #0d0220 50%, #0a1628 100%);
+    border-bottom: 2px solid var(--glow-border);
+    box-shadow: 0 0 30px rgba(107,33,168,.3), inset 0 -1px 0 rgba(0,240,255,.15);
+    padding: 20px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(255,45,149,.5));
+  }
+  header .meta {
+    color: var(--text2);
+    font-size: 12px;
+    letter-spacing: .5px;
+  }
+  header select {
+    background: var(--surface);
+    color: var(--neon-cyan);
+    border: 1px solid var(--glow-border);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    cursor: pointer;
+  }
+  header select:focus { outline: 1px solid var(--neon-cyan); box-shadow: 0 0 8px rgba(0,240,255,.3); }
+
+  .tabs {
+    display: flex;
+    gap: 2px;
+    padding: 16px 28px 0;
+  }
+  .tab {
+    padding: 10px 22px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text2);
+    background: transparent;
+    border: 1px solid transparent;
+    border-bottom: none;
+    transition: all .2s;
+  }
+  .tab:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0,240,255,.5);
+  }
+  .tab.active {
+    color: var(--neon-cyan);
+    background: var(--surface);
+    border-color: var(--glow-border);
+    text-shadow: 0 0 10px rgba(0,240,255,.5);
+  }
+
+  main { padding: 0 28px 50px; }
+
+  .summary-bar {
+    display: flex;
+    gap: 14px;
+    padding: 20px 0;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 20px;
+    min-width: 130px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+    opacity: .6;
+  }
+  .stat .label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text2);
+  }
+  .stat .value { font-size: 28px; font-weight: 700; margin-top: 4px; }
+  .stat .value.steal-count {
+    color: var(--steal);
+    text-shadow: 0 0 15px var(--steal-glow);
+  }
+  .stat .value.good-count {
+    color: var(--good);
+    text-shadow: 0 0 15px var(--good-glow);
+  }
+
+  .device-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 16px;
+    overflow: hidden;
+  }
+  .device-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+  }
+  .device-header:hover { background: var(--surface2); }
+  .device-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .device-brand {
+    color: var(--neon-cyan);
+    font-weight: 500;
+    margin-right: 8px;
+    text-shadow: 0 0 6px rgba(0,240,255,.3);
+  }
+  .device-badges { display: flex; gap: 10px; align-items: center; }
+  .device-count {
+    font-size: 11px;
+    color: var(--text2);
+    background: var(--surface2);
+    padding: 3px 12px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+  }
+  .device-market {
+    font-size: 11px;
+    color: var(--text2);
+  }
+  .chevron {
+    transition: transform .2s;
+    color: var(--neon-cyan);
+    font-size: 16px;
+  }
+  .device-section.collapsed .chevron { transform: rotate(-90deg); }
+  .device-section.collapsed .device-listings { display: none; }
+
+  .device-listings { border-top: 1px solid var(--border); }
+
+  .listing-thumb {
+    width: 72px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    opacity: .85;
+    transition: opacity .2s;
+  }
+  .listing-thumb:hover, .flat-listing:hover .listing-thumb { opacity: 1; }
+  .listing-thumb-placeholder {
+    width: 72px;
+    height: 54px;
+    border-radius: 4px;
+    background: var(--surface2);
+    border: 1px dashed var(--border);
+    flex-shrink: 0;
+  }
+
+  .listing {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 8px 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+    align-items: start;
+  }
+  .listing:last-child { border-bottom: none; }
+  .listing:hover { background: var(--surface2); }
+  .listing.steal {
+    border-left: 3px solid var(--steal);
+    box-shadow: inset 4px 0 12px -4px var(--steal-glow);
+  }
+  .listing.good_deal {
+    border-left: 3px solid var(--good);
+    box-shadow: inset 4px 0 12px -4px var(--good-glow);
+  }
+
+  .listing-title { font-weight: 400; font-size: 13px; }
+  .listing-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .listing-title a:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px rgba(0,240,255,.3);
+  }
+
+  .listing-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 4px;
+    flex-wrap: wrap;
+  }
+
+  .listing-right { text-align: right; white-space: nowrap; }
+  .listing-price {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--neon-amber);
+    text-shadow: 0 0 8px rgba(255,215,0,.3);
+  }
+  .listing-original {
+    font-size: 11px;
+    color: var(--text2);
+    text-decoration: line-through;
+  }
+  .listing-avg {
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+  .listing-ka-avg {
+    font-size: 11px;
+    color: var(--neon-cyan);
+    opacity: .7;
+  }
+  .ref-knobs {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-top: 5px;
+  }
+  .knob {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #2a1a50, #0e0620);
+    border: 2px solid var(--glow-border);
+    box-shadow:
+      0 0 6px rgba(107,33,168,.4),
+      inset 0 1px 2px rgba(255,255,255,.08),
+      inset 0 -1px 3px rgba(0,0,0,.4);
+    font-family: var(--font-display);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    color: var(--text2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .2s;
+    cursor: pointer;
+    position: relative;
+  }
+  .knob::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 8px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,.1);
+  }
+  .knob:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    box-shadow:
+      0 0 10px rgba(0,240,255,.4),
+      0 0 20px rgba(0,240,255,.15),
+      inset 0 1px 2px rgba(255,255,255,.1);
+    transform: rotate(-15deg);
+  }
+  .knob:active {
+    transform: rotate(-30deg);
+    box-shadow:
+      0 0 14px rgba(0,240,255,.5),
+      0 0 25px rgba(0,240,255,.2),
+      inset 0 1px 2px rgba(255,255,255,.12);
+  }
+  .knob-sub {
+    font-size: 5px;
+    vertical-align: sub;
+    margin-left: -1px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    vertical-align: middle;
+  }
+  .badge-steal {
+    background: var(--steal-bg);
+    color: var(--steal);
+    border: 1px solid rgba(255,45,149,.3);
+    text-shadow: 0 0 6px var(--steal-glow);
+  }
+  .badge-good {
+    background: var(--good-bg);
+    color: var(--good);
+    border: 1px solid rgba(57,255,20,.2);
+    text-shadow: 0 0 6px var(--good-glow);
+  }
+  .badge-market {
+    background: var(--market-bg);
+    color: var(--market);
+    border: 1px solid rgba(0,240,255,.15);
+  }
+  .badge-vb {
+    background: rgba(255,215,0,.1);
+    color: var(--vb);
+    border: 1px solid rgba(255,215,0,.25);
+    margin-left: 4px;
+  }
+
+  .flat-listing {
+    display: grid;
+    grid-template-columns: 72px minmax(140px, 190px) 1fr auto;
+    gap: 8px 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+    transition: background .15s;
+  }
+  .flat-listing:hover { background: var(--surface2); }
+  .flat-listing.steal {
+    border-left: 3px solid var(--steal);
+    box-shadow: inset 4px 0 12px -4px var(--steal-glow);
+  }
+  .flat-listing.good_deal {
+    border-left: 3px solid var(--good);
+    box-shadow: inset 4px 0 12px -4px var(--good-glow);
+  }
+  .flat-device {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: var(--text2);
+  }
+
+  .category-group { margin-top: 28px; }
+  .category-group:first-child { margin-top: 12px; }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 4px 8px;
+    border-bottom: 1px solid var(--glow-border);
+    margin-bottom: 0;
+  }
+  .category-icon { font-size: 18px; }
+  .category-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0,240,255,.3);
+  }
+  .category-count {
+    font-size: 11px;
+    color: var(--text2);
+    margin-left: auto;
+  }
+
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0 6px;
+    flex-wrap: wrap;
+  }
+  .filter-bar label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text2);
+  }
+  .filter-bar .range-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-bar input[type="number"] {
+    width: 80px;
+    background: var(--surface);
+    color: var(--neon-amber);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    text-align: right;
+  }
+  .filter-bar input[type="number"]:focus {
+    outline: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(0,240,255,.3);
+  }
+  .filter-bar .range-sep { color: var(--text2); font-size: 12px; }
+  .filter-bar .filter-count {
+    font-size: 11px;
+    color: var(--text2);
+    margin-left: auto;
+  }
+  .filter-bar .filter-count span { color: var(--neon-cyan); }
+  .filter-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .filter-bar select {
+    background: var(--surface);
+    color: var(--neon-amber);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .filter-bar select:focus {
+    outline: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(0,240,255,.3);
+  }
+  .disc-pct {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .disc-mkt { background: rgba(0,240,255,.15); color: var(--neon-cyan); }
+  .disc-ka  { background: rgba(0,255,100,.15); color: var(--neon-green); }
+
+  .opp-score {
+    font-family: var(--font-display);
+    font-size: 9px;
+    color: var(--neon-green);
+    background: rgba(57,255,20,.1);
+    border: 1px solid rgba(57,255,20,.2);
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 4px;
+  }
+  .filter-bar input[type="text"] {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+  }
+  .filter-bar input[type="text"]:focus {
+    outline: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(0,240,255,.3);
+  }
+
+  .view { display: none; }
+  .view.active { display: block; }
+
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text2);
+    font-size: 14px;
+  }
+
+  @media (max-width: 700px) {
+    header { padding: 14px 16px; }
+    header h1 { font-size: 16px; letter-spacing: 2px; }
+    main { padding: 0 14px 30px; }
+    .flat-listing { grid-template-columns: 56px 1fr auto; }
+    .flat-device { grid-column: 1 / -1; }
+    .listing { grid-template-columns: 56px 1fr auto; }
+    .listing-thumb, .listing-thumb-placeholder { width: 56px; height: 42px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Deal Scanner</h1>
+  <div class="meta">
+    Scanned {{ data.scan_date[:16] | replace('T', ' ') }}
+    &middot; {{ data.total_devices_searched }} devices
+    &middot; {{ data.total_listings_found }} listings
+  </div>
+  <select id="scan-picker" onchange="window.location='/?scan='+this.value">
+    {% for s in scans %}
+    <option value="{{ s }}" {{ 'selected' if s == current_scan else '' }}>{{ s }}</option>
+    {% endfor %}
+  </select>
+</header>
+
+<div class="tabs">
+  <div class="tab active" data-view="deals">Best Deals</div>
+  <div class="tab" data-view="devices">By Device</div>
+</div>
+
+<main>
+
+{% set ns = namespace(steals=0, goods=0) %}
+{% for r in data.results %}
+  {% for l in r.listings %}
+    {% if l.deal_rating == 'steal' %}{% set ns.steals = ns.steals + 1 %}{% endif %}
+    {% if l.deal_rating == 'good_deal' %}{% set ns.goods = ns.goods + 1 %}{% endif %}
+  {% endfor %}
+{% endfor %}
+<div class="summary-bar">
+  <div class="stat">
+    <div class="label">Steals</div>
+    <div class="value steal-count">{{ ns.steals }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Good Deals</div>
+    <div class="value good-count">{{ ns.goods }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Total Listings</div>
+    <div class="value">{{ data.total_listings_found }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Devices</div>
+    <div class="value">{{ data.total_devices_searched }}</div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <label>Price range</label>
+  <div class="range-group">
+    <input type="number" id="price-min" placeholder="0" min="0" step="50" value="0">&thinsp;&euro;
+    <span class="range-sep">&ndash;</span>
+    <input type="number" id="price-max" placeholder="any" min="0" step="50">&thinsp;&euro;
+  </div>
+  <span class="filter-sep"></span>
+  <label>Max age</label>
+  <div class="range-group">
+    <input type="number" id="age-months" placeholder="12" min="0" max="120" step="1" value="12" style="width:50px">&thinsp;mo
+    <input type="number" id="age-days" placeholder="0" min="0" max="365" step="1" value="" style="width:50px">&thinsp;d
+  </div>
+  <span class="filter-sep"></span>
+  <label>Sort by</label>
+  <select id="sort-picker">
+    <option value="profit">Est. profit</option>
+    <option value="discount-market">% off market avg</option>
+    <option value="discount-ka">% off KA avg</option>
+    <option value="price-asc">Price low &rarr; high</option>
+    <option value="price-desc">Price high &rarr; low</option>
+  </select>
+  <span class="filter-sep"></span>
+  <label>Category</label>
+  <select id="filter-category">
+    <option value="">All</option>
+    {% for cat in categories %}
+    <option value="{{ cat }}">{{ cat | replace('_', ' ') | title }}</option>
+    {% endfor %}
+  </select>
+  <span class="filter-sep"></span>
+  <label>Brand</label>
+  <select id="filter-brand">
+    <option value="">All</option>
+    {% for b in brands %}
+    <option value="{{ b }}">{{ b }}</option>
+    {% endfor %}
+  </select>
+  <span class="filter-sep"></span>
+  <label>Min opportunity</label>
+  <input type="number" id="filter-opp-min" placeholder="3" min="3" max="15" step="1" style="width:50px">
+  <span class="filter-sep"></span>
+  <label>Search</label>
+  <input type="text" id="filter-text" placeholder="device or title..." style="width:140px">
+  <div class="filter-count"><span id="visible-count"></span></div>
+</div>
+
+<!-- VIEW: BEST DEALS -->
+<div class="view active" id="view-deals">
+  {% set all_listings = [] %}
+  {% for r in data.results %}
+    {% for l in r.listings %}
+      {% if all_listings.append({'device': r.brand ~ ' ' ~ r.device, 'market': r.market, 'search_url': r.search_url, 'listing': l, 'category': r.category, 'brand': r.brand, 'opportunity': r.opportunity_score | default(0), 'device_name': r.device}) %}{% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% if not all_listings %}
+    <div class="empty">No listings found in this scan.</div>
+  {% else %}
+  <div class="device-section" style="margin-top:12px">
+    <div class="device-listings">
+      {% for item in all_listings | sort(attribute='listing.est_profit_eur', reverse=true) %}
+      {% set l = item.listing %}
+      {% set p = l.price_eur | int if l.price_eur else 0 %}
+      {% set mkt = item.market.avg_price_eur | int %}
+      {% set ka = item.market.ka_avg_eur | int if item.market.ka_avg_eur else 0 %}
+      {% set disc_mkt = ((mkt - p) / mkt * 100) | int if mkt else 0 %}
+      {% set disc_ka = ((ka - p) / ka * 100) | int if ka else 0 %}
+      <div class="flat-listing {{ l.deal_rating }}" data-price="{{ p }}" data-profit="{{ l.est_profit_eur | int if l.est_profit_eur else 0 }}" data-disc-market="{{ disc_mkt }}" data-disc-ka="{{ disc_ka }}" data-date="{{ l.date }}" data-category="{{ item.category }}" data-brand="{{ item.brand }}" data-opportunity="{{ item.opportunity }}" data-device="{{ item.device_name }}" data-title="{{ l.title | lower }}">
+        {% if l.image_url %}
+        <a href="{{ l.url }}" target="_blank" rel="noopener"><img class="listing-thumb" src="{{ l.image_url }}" alt="" loading="lazy"></a>
+        {% else %}<div class="listing-thumb-placeholder"></div>{% endif %}
+        <div class="flat-device">
+          {{ item.device }}
+          <span class="badge {% if l.deal_rating == 'steal' %}badge-steal{% elif l.deal_rating == 'good_deal' %}badge-good{% else %}badge-market{% endif %}">
+            {{ l.deal_rating | replace('_', ' ') }}
+          </span>
+          {% if l.is_vb %}<span class="badge badge-vb">VB</span>{% endif %}
+        </div>
+        <div>
+          <div class="listing-title">
+            <a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title }}</a>
+          </div>
+          <div class="listing-meta">
+            <span>{{ l.location }}</span>
+            <span>{{ l.date }}</span>
+            {% if l.description %}<span>{{ l.description[:80] }}{% if l.description|length > 80 %}&hellip;{% endif %}</span>{% endif %}
+          </div>
+        </div>
+        <div class="listing-right">
+          <div class="listing-price">{{ l.price_eur | int }}&thinsp;&euro;</div>
+          {% if l.original_price_eur %}<div class="listing-original">{{ l.original_price_eur | int }}&thinsp;&euro;</div>{% endif %}
+          <div class="listing-avg">avg ~{{ item.market.avg_price_eur | int }}&thinsp;&euro;{% if disc_mkt > 0 %} <span class="disc-pct disc-mkt">-{{ disc_mkt }}%</span>{% endif %}</div>
+          {% if item.market.ka_avg_eur and item.market.ka_listing_count >= 2 %}
+          <div class="listing-ka-avg">KA ~{{ item.market.ka_avg_eur | int }}&thinsp;&euro; ({{ item.market.ka_listing_count }}){% if disc_ka > 0 %} <span class="disc-pct disc-ka">-{{ disc_ka }}%</span>{% endif %}</div>
+          {% endif %}
+          <div class="ref-knobs">
+            <a class="knob" href="{{ item.search_url }}" target="_blank" title="Kleinanzeigen search" style="border-color:var(--neon-green);color:var(--neon-green)">K</a>
+            {% for ref in item.market.price_references %}
+            <a class="knob" href="{{ ref }}" target="_blank" title="{{ ref | replace('https://', '') | truncate(40, true, '…') }}">{% if 'reverb.com/p/' in ref %}R{% elif 'reverb.com' in ref %}R<span class="knob-sub">s</span>{% elif 'ebay' in ref %}E{% else %}?{% endif %}</a>
+            {% endfor %}
+          </div>
+          {% if item.opportunity > 0 %}
+          <div class="opp-score" title="Opportunity: rarity+liquidity+mispricing">OPP {{ item.opportunity }}</div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<!-- VIEW: BY DEVICE -->
+<div class="view" id="view-devices">
+  {% set category_order = ['synthesizer', 'keyboard', 'drum machine', 'drum synth', 'effect', 'sampler', 'microphone', 'other'] %}
+  {% set category_icons = {'synthesizer': '🎹', 'keyboard': '🎹', 'drum machine': '🥁', 'drum synth': '🥁', 'effect': '🎛', 'sampler': '💾', 'microphone': '🎤', 'other': '🔧'} %}
+
+  {% for cat in category_order %}
+  {% set cat_results = data.results | selectattr('category', 'equalto', cat) | list %}
+  {% set cat_has_listings = cat_results | selectattr('listings') | list | length > 0 %}
+  {% if cat_results and cat_has_listings %}
+  <div class="category-group">
+    <div class="category-header" id="cat-{{ cat | replace(' ', '-') }}">
+      <span class="category-icon">{{ category_icons[cat] | default('🔧') }}</span>
+      <span class="category-label">{{ cat | replace('_', ' ') | title }}s</span>
+      {% set cat_with_listings = cat_results | selectattr('listings') | list %}
+      {% set cat_listings = [] %}
+      {% for r in cat_with_listings %}{% for l in r.listings %}{% if cat_listings.append(l) %}{% endif %}{% endfor %}{% endfor %}
+      {% set cat_deals = cat_listings | selectattr('deal_rating', 'in', ['steal', 'good_deal']) | list | length %}
+      <span class="category-count">{{ cat_with_listings | length }} devices &middot; {{ cat_listings | length }} listings{% if cat_deals %} &middot; <span style="color:var(--good)">{{ cat_deals }} deal{{ 's' if cat_deals != 1 }}</span>{% endif %}</span>
+    </div>
+
+    {% for r in cat_results | sort(attribute='device') %}
+    {% if r.listings %}
+    {% set deal_count = r.listings | selectattr('deal_rating', 'in', ['steal', 'good_deal']) | list | length %}
+    <div class="device-section collapsed" data-category="{{ r.category }}" data-brand="{{ r.brand }}" data-opportunity="{{ r.opportunity_score | default(0) }}">
+      <div class="device-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <div>
+          <span class="device-name">
+            <span class="device-brand">{{ r.brand }}</span>{{ r.device }}
+          </span>
+          {% if deal_count %}
+          <span class="badge badge-good" style="margin-left:10px">{{ deal_count }} deal{{ 's' if deal_count != 1 }}</span>
+          {% endif %}
+        </div>
+        <div class="device-badges">
+          <span class="device-market">avg {{ r.market.avg_price_eur | int }}&euro;{% if r.market.ka_avg_eur and r.market.ka_listing_count >= 2 %} <span style="color:var(--neon-cyan);opacity:.7">&middot; KA ~{{ r.market.ka_avg_eur | int }}&euro;</span>{% endif %}</span>
+          <span class="device-count">{{ r.listings | length }} listing{{ 's' if r.listings | length != 1 }}</span>
+          <span class="chevron">&#9662;</span>
+        </div>
+      </div>
+      <div class="device-listings">
+        {% for l in r.listings | sort(attribute='est_profit_eur', reverse=true) %}
+        {% set lp = l.price_eur | int if l.price_eur else 0 %}
+        {% set lmkt = r.market.avg_price_eur | int %}
+        {% set lka = r.market.ka_avg_eur | int if r.market.ka_avg_eur else 0 %}
+        {% set ld_mkt = ((lmkt - lp) / lmkt * 100) | int if lmkt else 0 %}
+        {% set ld_ka = ((lka - lp) / lka * 100) | int if lka else 0 %}
+        <div class="listing {{ l.deal_rating }}" data-price="{{ lp }}" data-date="{{ l.date }}" data-category="{{ r.category }}" data-brand="{{ r.brand }}" data-opportunity="{{ r.opportunity_score | default(0) }}" data-device="{{ r.device }}" data-title="{{ l.title | lower }}">
+          {% if l.image_url %}
+          <a href="{{ l.url }}" target="_blank" rel="noopener"><img class="listing-thumb" src="{{ l.image_url }}" alt="" loading="lazy"></a>
+          {% else %}<div class="listing-thumb-placeholder"></div>{% endif %}
+          <div>
+            <div class="listing-title">
+              <span class="badge {% if l.deal_rating == 'steal' %}badge-steal{% elif l.deal_rating == 'good_deal' %}badge-good{% else %}badge-market{% endif %}">
+                {{ l.deal_rating | replace('_', ' ') }}
+              </span>
+              {% if l.is_vb %}<span class="badge badge-vb">VB</span>{% endif %}
+              <a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.title }}</a>
+            </div>
+            <div class="listing-meta">
+              <span>{{ l.location }}</span>
+              <span>{{ l.date }}</span>
+              {% if l.description %}<span>{{ l.description[:100] }}{% if l.description|length > 100 %}&hellip;{% endif %}</span>{% endif %}
+            </div>
+          </div>
+          <div class="listing-right">
+            <div class="listing-price">{{ lp }}&thinsp;&euro;</div>
+            {% if l.original_price_eur %}<div class="listing-original">{{ l.original_price_eur | int }}&thinsp;&euro;</div>{% endif %}
+            <div class="listing-avg">avg ~{{ lmkt }}&thinsp;&euro;{% if ld_mkt > 0 %} <span class="disc-pct disc-mkt">-{{ ld_mkt }}%</span>{% endif %}</div>
+            {% if r.market.ka_avg_eur and r.market.ka_listing_count >= 2 %}
+            <div class="listing-ka-avg">KA ~{{ lka }}&thinsp;&euro; ({{ r.market.ka_listing_count }}){% if ld_ka > 0 %} <span class="disc-pct disc-ka">-{{ ld_ka }}%</span>{% endif %}</div>
+            {% endif %}
+            <div class="ref-knobs">
+              <a class="knob" href="{{ r.search_url }}" target="_blank" title="Kleinanzeigen search" style="border-color:var(--neon-green);color:var(--neon-green)">K</a>
+              {% for ref in r.market.price_references %}
+              <a class="knob" href="{{ ref }}" target="_blank" title="{{ ref | replace('https://', '') | truncate(40, true, '…') }}">{% if 'reverb.com/p/' in ref %}R{% elif 'reverb.com' in ref %}R<span class="knob-sub">s</span>{% elif 'ebay' in ref %}E{% else %}?{% endif %}</a>
+              {% endfor %}
+            </div>
+            {% if r.opportunity_score is defined and r.opportunity_score > 0 %}
+            <div class="opp-score" title="Opportunity: rarity+liquidity+mispricing">OPP {{ r.opportunity_score }}</div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+</main>
+
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('view-' + tab.dataset.view).classList.add('active');
+  });
+});
+
+const minEl = document.getElementById('price-min');
+const maxEl = document.getElementById('price-max');
+const ageMonthsEl = document.getElementById('age-months');
+const ageDaysEl = document.getElementById('age-days');
+const countEl = document.getElementById('visible-count');
+const catEl = document.getElementById('filter-category');
+const brandEl = document.getElementById('filter-brand');
+const oppMinEl = document.getElementById('filter-opp-min');
+const textEl = document.getElementById('filter-text');
+
+function parseDDMMYYYY(s) {
+  if (!s) return null;
+  const m = s.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+  if (!m) return null;
+  return new Date(parseInt(m[3]), parseInt(m[2]) - 1, parseInt(m[1]));
+}
+
+function getCutoffDate() {
+  const months = parseInt(ageMonthsEl.value);
+  const days = parseInt(ageDaysEl.value);
+  if (isNaN(months) && isNaN(days)) return null;
+  const now = new Date();
+  if (!isNaN(days) && days > 0) {
+    return new Date(now.getTime() - days * 86400000);
+  }
+  if (!isNaN(months)) {
+    const cut = new Date(now);
+    cut.setMonth(cut.getMonth() - months);
+    return cut;
+  }
+  return null;
+}
+
+function applyFilters() {
+  const lo = parseInt(minEl.value) || 0;
+  const hi = parseInt(maxEl.value) || Infinity;
+  const cutoff = getCutoffDate();
+  const catFilter = catEl.value.toLowerCase();
+  const brandFilter = brandEl.value;
+  const oppMin = parseInt(oppMinEl.value) || 0;
+  const textFilter = textEl.value.toLowerCase().trim();
+  let shown = 0, total = 0;
+
+  document.querySelectorAll('[data-price]').forEach(el => {
+    const p = parseInt(el.dataset.price) || 0;
+    const d = parseDDMMYYYY(el.dataset.date);
+    total++;
+    const priceOk = p >= lo && p <= hi;
+    const dateOk = !cutoff || !d || d >= cutoff;
+    const catOk = !catFilter || (el.dataset.category || '').toLowerCase() === catFilter;
+    const brandOk = !brandFilter || (el.dataset.brand || '') === brandFilter;
+    const oppOk = oppMin <= 0 || (parseInt(el.dataset.opportunity) || 0) >= oppMin;
+    const textOk = !textFilter ||
+      (el.dataset.device || '').toLowerCase().includes(textFilter) ||
+      (el.dataset.title || '').includes(textFilter);
+    if (priceOk && dateOk && catOk && brandOk && oppOk && textOk) {
+      el.style.display = '';
+      shown++;
+    } else {
+      el.style.display = 'none';
+    }
+  });
+
+  countEl.textContent = shown < total ? shown + ' / ' + total + ' listings' : total + ' listings';
+
+  document.querySelectorAll('.device-section').forEach(sec => {
+    const visible = sec.querySelectorAll('[data-price]:not([style*="display: none"])');
+    sec.style.display = visible.length ? '' : 'none';
+  });
+
+  document.querySelectorAll('.category-group').forEach(grp => {
+    const visible = grp.querySelectorAll('.device-section:not([style*="display: none"])');
+    grp.style.display = visible.length ? '' : 'none';
+  });
+}
+
+minEl.addEventListener('input', applyFilters);
+maxEl.addEventListener('input', applyFilters);
+ageMonthsEl.addEventListener('input', function() {
+  if (this.value !== '') ageDaysEl.value = '';
+  applyFilters();
+});
+ageDaysEl.addEventListener('input', function() {
+  if (this.value !== '') ageMonthsEl.value = '';
+  applyFilters();
+});
+catEl.addEventListener('change', applyFilters);
+brandEl.addEventListener('change', applyFilters);
+oppMinEl.addEventListener('input', applyFilters);
+textEl.addEventListener('input', applyFilters);
+applyFilters();
+
+const sortPicker = document.getElementById('sort-picker');
+function applySorting() {
+  const key = sortPicker.value;
+  const container = document.querySelector('#view-deals .device-listings');
+  if (!container) return;
+  const items = Array.from(container.querySelectorAll('.flat-listing'));
+  items.sort((a, b) => {
+    let av, bv;
+    switch (key) {
+      case 'profit':
+        av = parseInt(a.dataset.profit) || 0;
+        bv = parseInt(b.dataset.profit) || 0;
+        return bv - av;
+      case 'discount-market':
+        av = parseInt(a.dataset.discMarket) || 0;
+        bv = parseInt(b.dataset.discMarket) || 0;
+        return bv - av;
+      case 'discount-ka':
+        av = parseInt(a.dataset.discKa) || 0;
+        bv = parseInt(b.dataset.discKa) || 0;
+        return bv - av;
+      case 'price-asc':
+        av = parseInt(a.dataset.price) || 0;
+        bv = parseInt(b.dataset.price) || 0;
+        return av - bv;
+      case 'price-desc':
+        av = parseInt(a.dataset.price) || 0;
+        bv = parseInt(b.dataset.price) || 0;
+        return bv - av;
+    }
+    return 0;
+  });
+  items.forEach(el => container.appendChild(el));
+}
+sortPicker.addEventListener('change', applySorting);
+</script>
+</body>
+</html>
