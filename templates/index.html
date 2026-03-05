@@ -839,6 +839,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('view-' + tab.dataset.view).classList.add('active');
+    applyFilters();
   });
 });
 
@@ -885,10 +886,11 @@ function applyFilters() {
   const textFilter = textEl.value.toLowerCase().trim();
   let shown = 0, total = 0;
 
+  const activeView = document.querySelector('.view.active');
+
   document.querySelectorAll('[data-price]').forEach(el => {
     const p = parseInt(el.dataset.price) || 0;
     const d = parseDDMMYYYY(el.dataset.date);
-    total++;
     const priceOk = p >= lo && p <= hi;
     const dateOk = !cutoff || !d || d >= cutoff;
     const catOk = !catFilter || (el.dataset.category || '').toLowerCase() === catFilter;
@@ -897,11 +899,11 @@ function applyFilters() {
     const textOk = !textFilter ||
       (el.dataset.device || '').toLowerCase().includes(textFilter) ||
       (el.dataset.title || '').includes(textFilter);
-    if (priceOk && dateOk && catOk && brandOk && oppOk && textOk) {
-      el.style.display = '';
-      shown++;
-    } else {
-      el.style.display = 'none';
+    const visible = priceOk && dateOk && catOk && brandOk && oppOk && textOk;
+    el.style.display = visible ? '' : 'none';
+    if (activeView && activeView.contains(el)) {
+      total++;
+      if (visible) shown++;
     }
   });
 
