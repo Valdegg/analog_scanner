@@ -8,15 +8,9 @@ An extension to the existing Kleinanzeigen.de deal scanner that finds underprice
 
 Surface hidden gems — listings where a valuable vintage device is sold under a vague generic title at a low price, and the seller doesn't realize what they have.
 
-## Current Milestone: v1.1 Dashboard Filters
+## Current Milestone: v1.2 Generic Query LLM Analysis
 
-**Goal:** Make the web dashboard more usable by adding filters for category, brand, and opportunity score.
-
-**Target features:**
-- Category filter (synthesizer, keyboard, drum machine, etc.)
-- Brand filter (Roland, Korg, Moog, etc.)
-- Combined opportunity score filter (rarity + liquidity + mispricing)
-- Filters apply to both Best Deals and By Device views
+**Goal:** Find underpriced vintage gear listed under generic terms by using LLM vision to identify what sellers don't know they have.
 
 ## Requirements
 
@@ -27,24 +21,18 @@ Surface hidden gems — listings where a valuable vintage device is sold under a
 - ✓ Schema-driven device catalog with market prices and deal detection thresholds — existing
 - ✓ Web dashboard for browsing scan results — existing
 - ✓ `common_mislabels` defined per device in schema.json — existing
+- ✓ Dashboard filters for category, brand, and opportunity score — v1.1
 
 ### Active
 
-- [ ] Category filter on dashboard (synthesizer, keyboard, drum machine, drum synth, effect, sampler, microphone)
-- [ ] Brand filter on dashboard (populated from scan results)
-- [ ] Combined opportunity score filter (sum of rarity + liquidity + mispricing from schema.json, min threshold)
-- [ ] web.py merges opportunity scores from schema.json at render time
-- [ ] Filters apply to both Best Deals and By Device views
-
-### Future
-
 - [ ] Generic query scanner that searches deduplicated mislabels and additional generic/German queries
 - [ ] Full listing page scraping (navigate to each result for high-res images + full description)
-- [ ] LLM analysis via OpenRouter with vision to identify devices from images and descriptions
-- [ ] Structured JSON output from LLM: identified device name, confidence, reasoning, estimated value
+- [ ] LLM analysis via OpenRouter with vision to identify devices (open discovery, not schema-constrained)
+- [ ] Structured JSON output from LLM: identified device name, confidence, reasoning, estimated value, is_candidate_valuable
 - [ ] Separate results file for generic scan output
 - [ ] Price cap at 500€ for generic queries
 - [ ] German-language queries alongside English
+- [ ] Validation experiment on real data
 
 ### Out of Scope
 
@@ -81,8 +69,7 @@ Surface hidden gems — listings where a valuable vintage device is sold under a
 | Separate results file for generic scans | Different data shape (LLM analysis fields) and don't pollute device-specific results | — Pending |
 | German + English queries | Kleinanzeigen.de is German marketplace; sellers use German terms | — Pending |
 
----
-| Merge opportunity scores in web.py (not scanner) | Works with existing scan results, no re-scan needed | — Pending |
+| Merge opportunity scores in web.py (not scanner) | Works with existing scan results, no re-scan needed | ✓ Good |
 
 ---
-*Last updated: 2026-03-05 after milestone v1.1 started*
+*Last updated: 2026-03-05 after v1.1 complete, starting v1.2*
