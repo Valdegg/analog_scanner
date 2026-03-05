@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Dashboard Filters
-status: completed
-stopped_at: Phase 1 context gathered
-last_updated: "2026-03-05T11:19:35.889Z"
-last_activity: 2026-03-05 -- Completed 04-01 data filter controls
+status: in_progress
+stopped_at: Completed 01-01-PLAN.md
+last_updated: "2026-03-05T11:30:00Z"
+last_activity: 2026-03-05 -- Completed 01-01 query pipeline & search scraping
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
+  total_plans: 3
+  completed_plans: 2
   percent: 100
 ---
 
@@ -21,33 +21,34 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-05)
 
 **Core value:** Surface hidden gems -- listings where a valuable vintage device is sold under a vague generic title at a low price
-**Current focus:** Phase 4: Data & Filter Controls (v1.1 Dashboard Filters)
+**Current focus:** Phase 1: Query Pipeline & Scraping
 
 ## Current Position
 
-Phase: 4 of 5 (Data & Filter Controls)
-Plan: 1 of 1 in current phase (complete)
-Status: Phase 4 complete
-Last activity: 2026-03-05 -- Completed 04-01 data filter controls
+Phase: 1 of 5 (Query Pipeline & Scraping)
+Plan: 1 of 2 in current phase (complete)
+Status: Plan 01-01 complete, 01-02 pending
+Last activity: 2026-03-05 -- Completed 01-01 query pipeline & search scraping
 
-Progress: [██████████] 100%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
+- Total plans completed: 2
 - Average duration: 2 min
-- Total execution time: 0.03 hours
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 04-data-filter-controls | 1 | 2 min | 2 min |
+| 01-query-pipeline-scraping | 1 | 1 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (2 min)
-- Trend: baseline
+- Last 5 plans: 04-01 (2 min), 01-01 (1 min)
+- Trend: stable
 
 *Updated after each plan completion*
 
@@ -63,6 +64,8 @@ Recent decisions affecting current work:
 - [Roadmap v1.1]: Coarse granularity, 2 phases for 7 requirements
 - [Phase 04]: Schema lookup built once at module level (SCHEMA_LOOKUP) for performance
 - [Phase 04]: Opportunity score = sum of rarity + liquidity + mispricing (range 3-15, 0 for unknown)
+- [Phase 01]: 172 unique queries from 164 mislabels + 10 German generic terms
+- [Phase 01]: Generic search URL uses no min price, 500 EUR max cap
 
 ### Pending Todos
 
@@ -74,6 +77,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-05T11:19:35.886Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-query-pipeline-scraping/01-CONTEXT.md
+Last session: 2026-03-05T11:30:00Z
+Stopped at: Completed 01-01-PLAN.md
+Resume file: .planning/phases/01-query-pipeline-scraping/01-01-SUMMARY.md
