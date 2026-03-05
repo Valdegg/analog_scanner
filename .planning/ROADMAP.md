@@ -90,11 +90,10 @@ Plans:
   3. User can select a brand from a dynamically populated dropdown and only listings from that brand are shown
   4. User can set a minimum opportunity score threshold and only listings at or above that score are shown
   5. User can type text into a search box and only listings whose device name or listing title match are shown
-**Plans**: TBD
+**Plans:** 1 plan
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- Merge opportunity scores and add category/brand/opportunity/text filters
 
 ### Phase 5: Cross-View Filter Integration
 **Goal**: All filters work consistently across both dashboard views and combine correctly with each other and with existing filters
@@ -119,5 +118,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Query Pipeline & Scraping | v1.0 | 0/0 | Not started | - |
 | 2. LLM Analysis & Results | v1.0 | 0/0 | Not started | - |
 | 3. Validation Experiment | v1.0 | 0/0 | Not started | - |
-| 4. Data & Filter Controls | v1.1 | 0/0 | Not started | - |
+| 4. Data & Filter Controls | v1.1 | 0/1 | Planning complete | - |
 | 5. Cross-View Filter Integration | v1.1 | 0/0 | Not started | - |
