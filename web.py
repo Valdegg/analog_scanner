@@ -1,8 +1,12 @@
 """Deal Scanner Dashboard -- Flask web interface for scan results."""
 import json
+import re
 from pathlib import Path
 
+import pgeocode
 from flask import Flask, render_template, jsonify, request
+
+_nomi = pgeocode.Nominatim('de')
 
 app = Flask(__name__)
 RESULTS_DIR = Path(__file__).parent / "results"
@@ -26,6 +30,60 @@ def load_schema() -> dict:
 
 
 SCHEMA_LOOKUP = load_schema()
+
+_plz_cache: dict[str, tuple[float, float] | None] = {}
+
+
+def _extract_plz(location: str | None) -> str | None:
+    """Extract 5-digit German PLZ from a location string like '59065 Hamm'."""
+    if not location:
+        return None
+    m = re.match(r"(\d{5})", location.strip())
+    return m.group(1) if m else None
+
+
+def geocode_plz_set(plz_codes: set[str]) -> dict[str, list[float]]:
+    """Resolve a set of PLZ codes to {plz: [lat, lng]} via pgeocode (cached)."""
+    result = {}
+    to_lookup = []
+    for plz in plz_codes:
+        if plz in _plz_cache:
+            if _plz_cache[plz]:
+                result[plz] = list(_plz_cache[plz])
+        else:
+            to_lookup.append(plz)
+    if to_lookup:
+        df = _nomi.query_postal_code(to_lookup)
+        for i, plz in enumerate(to_lookup):
+            row = df.iloc[i] if len(to_lookup) > 1 else df
+            lat, lng = float(row["latitude"]), float(row["longitude"])
+            if lat != lat:  # NaN check
+                _plz_cache[plz] = None
+            else:
+                _plz_cache[plz] = (lat, lng)
+                result[plz] = [lat, lng]
+    return result
+
+
+def build_plz_coords(*datasets) -> dict[str, list[float]]:
+    """Extract all PLZ codes from listing datasets and geocode them."""
+    plz_codes = set()
+    for data in datasets:
+        if not data:
+            continue
+        # Scan results: data.results[].listings[].location
+        for r in data.get("results", []):
+            if isinstance(r, dict) and "listings" in r:
+                for l in r["listings"]:
+                    plz = _extract_plz(l.get("location"))
+                    if plz:
+                        plz_codes.add(plz)
+            else:
+                # Analysis results: flat list with .location
+                plz = _extract_plz(r.get("location"))
+                if plz:
+                    plz_codes.add(plz)
+    return geocode_plz_set(plz_codes)
 
 
 def merge_opportunity(data: dict) -> dict:
@@ -66,6 +124,25 @@ def _schema_values() -> tuple[list[str], list[str]]:
 CATEGORIES, BRANDS = _schema_values()
 
 
+def load_analysis(filename: str | None = None) -> dict:
+    """Load the most recent generic scan analysis."""
+    if filename:
+        path = RESULTS_DIR / filename
+    else:
+        analyses = sorted(RESULTS_DIR.glob("analysis_*.json"), reverse=True)
+        if not analyses:
+            return {"results": [], "total_analyzed": 0}
+        path = analyses[0]
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def list_analyses() -> list[str]:
+    return sorted(
+        [p.name for p in RESULTS_DIR.glob("analysis_*.json")], reverse=True
+    )
+
+
 def load_scan(filename: str | None = None) -> dict:
     if filename:
         path = RESULTS_DIR / filename
@@ -92,9 +169,16 @@ def index():
     merge_opportunity(data)
     scans = list_scans()
     current_scan = scan_file or (scans[0] if scans else None)
+    analysis_file = request.args.get("analysis")
+    analysis = load_analysis(analysis_file)
+    analyses = list_analyses()
+    current_analysis = analysis_file or (analyses[0] if analyses else None)
+    plz_coords = build_plz_coords(data, analysis)
     return render_template(
         "index.html", data=data, scans=scans, current_scan=current_scan,
         categories=CATEGORIES, brands=BRANDS,
+        analysis=analysis, analyses=analyses, current_analysis=current_analysis,
+        plz_coords=plz_coords,
     )
 
 

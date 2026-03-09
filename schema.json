@@ -1,0 +1,3368 @@
+{
+    "schema_version": "1.0",
+    "scales": {
+        "rarity_score": "1(common) .. 5(rare)",
+        "liquidity_score": "1(slow resale) .. 5(fast resale)",
+        "mispricing_frequency": "1(rarely underpriced) .. 5(often underpriced)"
+    },
+    "devices": [
+        {
+            "name": "JX-3P",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1983,
+                1985
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1000,
+                "good_deal_price_eur": 650,
+                "steal_price_eur": 400,
+                "price_references": [
+                    "https://reverb.com/p/roland-jx-3p",
+                    "https://reverb.com/marketplace?query=Roland%20JX-3P&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20JX-3P&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland keyboard",
+                    "80s keyboard",
+                    "old synth",
+                    "MIDI keyboard"
+                ],
+                "search_keywords": [
+                    "JX-3P",
+                    "JX3P",
+                    "Roland JX"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage",
+                    "synthesizer"
+                ]
+            },
+            "notes": "Often sold as a generic 80s keyboard; PG-200 programmer (if included) adds value."
+        },
+        {
+            "name": "JX-8P",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1985,
+                1987
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1150,
+                "good_deal_price_eur": 750,
+                "steal_price_eur": 450,
+                "price_references": [
+                    "https://reverb.com/p/roland-jx-8p",
+                    "https://reverb.com/marketplace?query=Roland%20JX-8P&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20JX-8P&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland piano",
+                    "Roland keyboard",
+                    "80s synth",
+                    "home keyboard"
+                ],
+                "search_keywords": [
+                    "JX-8P",
+                    "JX8P",
+                    "Roland JX8"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage",
+                    "poly synth"
+                ]
+            },
+            "notes": "Interface looks 'digital' so some sellers undervalue it; programmer/controller inclusion matters."
+        },
+        {
+            "name": "Alpha Juno 1",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1985,
+                1986
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 800,
+                "good_deal_price_eur": 550,
+                "steal_price_eur": 350,
+                "price_references": [
+                    "https://reverb.com/p/roland-alpha-juno-1",
+                    "https://reverb.com/marketplace?query=Roland%20Alpha%20Juno%201&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20Alpha%20Juno%201&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland keyboard",
+                    "old synth",
+                    "80s keyboard",
+                    "Roland piano"
+                ],
+                "search_keywords": [
+                    "Alpha Juno 1",
+                    "AlphaJuno",
+                    "Juno 1"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage",
+                    "synth"
+                ]
+            },
+            "notes": "Mispriced because of the single-slider UI; 'hoover' association drives demand."
+        },
+        {
+            "name": "Alpha Juno 2",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1985,
+                1987
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 950,
+                "good_deal_price_eur": 600,
+                "steal_price_eur": 380,
+                "price_references": [
+                    "https://reverb.com/p/roland-alpha-juno-2",
+                    "https://reverb.com/marketplace?query=Roland%20Alpha%20Juno%202&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20Alpha%20Juno%202&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland keyboard",
+                    "old synth",
+                    "80s keyboard",
+                    "MIDI keyboard"
+                ],
+                "search_keywords": [
+                    "Alpha Juno 2",
+                    "Juno 2",
+                    "AlphaJuno2"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage",
+                    "poly"
+                ]
+            },
+            "notes": "Often sold by non-synth folks as a 'MIDI keyboard'; condition of keybed matters."
+        },
+        {
+            "name": "MKS-50",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "rack analog polyphonic",
+            "year_range": [
+                1986,
+                1988
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 850,
+                "good_deal_price_eur": 550,
+                "steal_price_eur": 320,
+                "price_references": [
+                    "https://reverb.com/p/roland-mks-50",
+                    "https://reverb.com/marketplace?query=Roland%20MKS-50&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20MKS-50&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "rack sound module",
+                    "MIDI module",
+                    "rack synth",
+                    "studio module"
+                ],
+                "search_keywords": [
+                    "MKS-50",
+                    "MKS50",
+                    "Roland rack Juno"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "Alpha Juno"
+                ]
+            },
+            "notes": "Rack gear is regularly undervalued; programmer (PG-300) boosts usability/value."
+        },
+        {
+            "name": "Poly-61",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1982,
+                1984
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 650,
+                "good_deal_price_eur": 400,
+                "steal_price_eur": 250,
+                "price_references": [
+                    "https://reverb.com/p/korg-poly-61",
+                    "https://reverb.com/marketplace?query=Korg%20Poly-61&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20Poly-61&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg keyboard",
+                    "old Korg",
+                    "home keyboard"
+                ],
+                "search_keywords": [
+                    "Poly-61",
+                    "Poly61",
+                    "Korg Poly 61"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "poly synth"
+                ]
+            },
+            "notes": "Often bundled with stands/cases; sellers may not know it's an analog poly."
+        },
+        {
+            "name": "Poly-800",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "analog hybrid",
+            "year_range": [
+                1983,
+                1986
+            ],
+            "architecture": "digitally controlled + analog filter (paraphonic style)",
+            "market": {
+                "avg_market_price_eur": 450,
+                "good_deal_price_eur": 280,
+                "steal_price_eur": 160,
+                "price_references": [
+                    "https://reverb.com/p/korg-poly-800",
+                    "https://reverb.com/marketplace?query=Korg%20Poly-800&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20Poly-800&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 2,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg keyboard",
+                    "MIDI keyboard",
+                    "80s keyboard"
+                ],
+                "search_keywords": [
+                    "Poly-800",
+                    "Poly800",
+                    "Korg Poly 800"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "synth"
+                ]
+            },
+            "notes": "Not always a €1000-class item, but deals happen; common and easy to resell."
+        },
+        {
+            "name": "DW-6000",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "hybrid",
+            "year_range": [
+                1984,
+                1986
+            ],
+            "architecture": "digital oscillators with analog filter",
+            "market": {
+                "avg_market_price_eur": 600,
+                "good_deal_price_eur": 380,
+                "steal_price_eur": 220,
+                "price_references": [
+                    "https://reverb.com/p/korg-dw-6000",
+                    "https://reverb.com/marketplace?query=Korg%20DW-6000&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20DW-6000&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg keyboard",
+                    "digital synth",
+                    "old Korg piano"
+                ],
+                "search_keywords": [
+                    "DW-6000",
+                    "DW6000",
+                    "Korg DW"
+                ],
+                "missing_keywords": [
+                    "analog filter",
+                    "vintage synth"
+                ]
+            },
+            "notes": "Often assumed to be 'digital junk'; hybrid character is the value."
+        },
+        {
+            "name": "DW-8000",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "hybrid",
+            "year_range": [
+                1985,
+                1987
+            ],
+            "architecture": "digital oscillators with analog filter",
+            "market": {
+                "avg_market_price_eur": 700,
+                "good_deal_price_eur": 420,
+                "steal_price_eur": 260,
+                "price_references": [
+                    "https://reverb.com/p/korg-dw-8000",
+                    "https://reverb.com/marketplace?query=Korg%20DW-8000&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20DW-8000&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg keyboard",
+                    "old Korg",
+                    "MIDI keyboard"
+                ],
+                "search_keywords": [
+                    "DW-8000",
+                    "DW8000",
+                    "Korg DW8000"
+                ],
+                "missing_keywords": [
+                    "analog filter",
+                    "vintage synth"
+                ]
+            },
+            "notes": "Built-in delay is a selling point; frequently undervalued in local listings."
+        },
+        {
+            "name": "AX-60",
+            "brand": "Akai",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1986,
+                1988
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 900,
+                "good_deal_price_eur": 580,
+                "steal_price_eur": 350,
+                "price_references": [
+                    "https://reverb.com/p/akai-ax-60",
+                    "https://reverb.com/marketplace?query=Akai%20AX-60&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Akai%20AX-60&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Akai keyboard",
+                    "80s synth",
+                    "old synth"
+                ],
+                "search_keywords": [
+                    "AX-60",
+                    "AX60",
+                    "Akai AX"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "poly synth"
+                ]
+            },
+            "notes": "Akai branding makes some sellers assume 'sampler company' rather than vintage synth value."
+        },
+        {
+            "name": "AX-73",
+            "brand": "Akai",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1986,
+                1988
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 850,
+                "good_deal_price_eur": 550,
+                "steal_price_eur": 330,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Akai%20AX-73&condition=used",
+                    "https://reverb.com/marketplace?query=Akai%20AX-73&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Akai%20AX-73&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Akai keyboard",
+                    "old keyboard",
+                    "MIDI keyboard"
+                ],
+                "search_keywords": [
+                    "AX-73",
+                    "AX73",
+                    "Akai AX73"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "synth"
+                ]
+            },
+            "notes": "Less famous than peers; occasionally priced like a generic controller."
+        },
+        {
+            "name": "VX-600",
+            "brand": "Akai",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1986,
+                1988
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1200,
+                "good_deal_price_eur": 800,
+                "steal_price_eur": 500,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Akai%20VX-600&condition=used",
+                    "https://reverb.com/marketplace?query=Akai%20VX-600&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Akai%20VX-600&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 3,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Akai synth",
+                    "old studio keyboard",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "VX-600",
+                    "VX600",
+                    "Akai VX"
+                ],
+                "missing_keywords": [
+                    "analog poly",
+                    "rare"
+                ]
+            },
+            "notes": "Rarity can reduce mispricing frequency, but occasional uninformed listings exist."
+        },
+        {
+            "name": "SH-101",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1982,
+                1984
+            ],
+            "architecture": "VCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1600,
+                "good_deal_price_eur": 1050,
+                "steal_price_eur": 650,
+                "price_references": [
+                    "https://reverb.com/p/roland-sh-101",
+                    "https://reverb.com/marketplace?query=Roland%20SH-101&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20SH-101&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland keyboard",
+                    "bass synth",
+                    "old synth",
+                    "sequencer keyboard"
+                ],
+                "search_keywords": [
+                    "SH-101",
+                    "SH101",
+                    "Roland SH"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "classic",
+                    "vintage"
+                ]
+            },
+            "notes": "Usually priced correctly; bargains happen in local cash sales or incomplete listings."
+        },
+        {
+            "name": "SH-09",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1980,
+                1982
+            ],
+            "architecture": "VCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1000,
+                "good_deal_price_eur": 700,
+                "steal_price_eur": 450,
+                "price_references": [
+                    "https://reverb.com/p/roland-sh-09",
+                    "https://reverb.com/marketplace?query=Roland%20SH-09&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20SH-09&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland keyboard",
+                    "old synth",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "SH-09",
+                    "SH09",
+                    "Roland SH-09"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "mono synth"
+                ]
+            },
+            "notes": "Less famous than SH-101; some sellers undervalue if they don’t track synth markets."
+        },
+        {
+            "name": "SH-2",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1979,
+                1981
+            ],
+            "architecture": "dual VCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 2000,
+                "good_deal_price_eur": 1400,
+                "steal_price_eur": 900,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Roland%20SH-2&condition=used",
+                    "https://reverb.com/marketplace?query=Roland%20SH-2&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20SH-2&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 5,
+                "liquidity_score": 4,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland synth",
+                    "old keyboard",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "SH-2",
+                    "SH2",
+                    "Roland SH2"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "rare"
+                ]
+            },
+            "notes": "Typically expensive; true steals are rare, but worth watching."
+        },
+        {
+            "name": "MS-20",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "semi-modular analog",
+            "year_range": [
+                1978,
+                1983
+            ],
+            "architecture": "semi-modular analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1800,
+                "good_deal_price_eur": 1200,
+                "steal_price_eur": 800,
+                "price_references": [
+                    "https://reverb.com/p/korg-ms-20",
+                    "https://reverb.com/marketplace?query=Korg%20MS-20&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20MS-20&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg synth",
+                    "old Korg",
+                    "patch synth",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "MS-20",
+                    "MS20",
+                    "Korg MS20"
+                ],
+                "missing_keywords": [
+                    "original",
+                    "vintage",
+                    "analog"
+                ]
+            },
+            "notes": "Usually priced correctly; bargains more likely if listed without clear photos/model. Distinguish from MS-20 Mini reissue (2013, worth only ~€300–400)."
+        },
+        {
+            "name": "Mono/Poly",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1981,
+                1984
+            ],
+            "architecture": "VCO analog (paraphonic/assignable)",
+            "market": {
+                "avg_market_price_eur": 1850,
+                "good_deal_price_eur": 1300,
+                "steal_price_eur": 900,
+                "price_references": [
+                    "https://reverb.com/p/korg-mono-poly",
+                    "https://reverb.com/marketplace?query=Korg%20Mono/Poly&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20Mono/Poly&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg keyboard",
+                    "old synth",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "Mono/Poly",
+                    "Mono Poly",
+                    "Korg MonoPoly"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "classic"
+                ]
+            },
+            "notes": "Confusion over mono/poly nature sometimes lowers perceived value."
+        },
+        {
+            "name": "CS-10",
+            "brand": "Yamaha",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1977,
+                1980
+            ],
+            "architecture": "analog subtractive",
+            "market": {
+                "avg_market_price_eur": 700,
+                "good_deal_price_eur": 450,
+                "steal_price_eur": 280,
+                "price_references": [
+                    "https://reverb.com/p/yamaha-cs-10",
+                    "https://reverb.com/marketplace?query=Yamaha%20CS-10&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Yamaha%20CS-10&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 3,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Yamaha keyboard",
+                    "old Yamaha",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "CS-10",
+                    "CS10",
+                    "Yamaha CS"
+                ],
+                "missing_keywords": [
+                    "synthesizer",
+                    "analog"
+                ]
+            },
+            "notes": "Overshadowed by higher CS models; can be undervalued outside synth circles."
+        },
+        {
+            "name": "CS-15",
+            "brand": "Yamaha",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1979,
+                1982
+            ],
+            "architecture": "dual-voice analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1100,
+                "good_deal_price_eur": 750,
+                "steal_price_eur": 480,
+                "price_references": [
+                    "https://reverb.com/p/yamaha-cs-15",
+                    "https://reverb.com/marketplace?query=Yamaha%20CS-15&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Yamaha%20CS-15&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 3,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Yamaha keyboard",
+                    "old synth",
+                    "vintage Yamaha"
+                ],
+                "search_keywords": [
+                    "CS-15",
+                    "CS15",
+                    "Yamaha CS15"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "synth"
+                ]
+            },
+            "notes": "Sellers sometimes treat it as 'old Yamaha keyboard' rather than a real analog synth."
+        },
+        {
+            "name": "MKS-30",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "rack analog polyphonic",
+            "year_range": [
+                1983,
+                1985
+            ],
+            "architecture": "DCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 750,
+                "good_deal_price_eur": 480,
+                "steal_price_eur": 280,
+                "price_references": [
+                    "https://reverb.com/p/roland-mks-30",
+                    "https://reverb.com/marketplace?query=Roland%20MKS-30&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20MKS-30&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "rack sound module",
+                    "Roland module",
+                    "MIDI rack"
+                ],
+                "search_keywords": [
+                    "MKS-30",
+                    "MKS30",
+                    "JX-3P rack"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "JX-3P"
+                ]
+            },
+            "notes": "If listed simply as a 'Roland rack module', can slip under market."
+        },
+        {
+            "name": "MKS-70",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "rack analog polyphonic",
+            "year_range": [
+                1985,
+                1987
+            ],
+            "architecture": "DCO analog subtractive (dual-engine)",
+            "market": {
+                "avg_market_price_eur": 1550,
+                "good_deal_price_eur": 1000,
+                "steal_price_eur": 600,
+                "price_references": [
+                    "https://reverb.com/p/roland-mks-70",
+                    "https://reverb.com/marketplace?query=Roland%20MKS-70&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20MKS-70&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "sound module",
+                    "rack synth",
+                    "studio rack"
+                ],
+                "search_keywords": [
+                    "MKS-70",
+                    "MKS70",
+                    "Super JX"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "JX-10"
+                ]
+            },
+            "notes": "Sometimes sold by studios liquidating rack gear; programmer/internals vary by revision."
+        },
+        {
+            "name": "MKS-80",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "rack analog polyphonic",
+            "year_range": [
+                1984,
+                1989
+            ],
+            "architecture": "analog subtractive (high-end rack)",
+            "market": {
+                "avg_market_price_eur": 4800,
+                "good_deal_price_eur": 3400,
+                "steal_price_eur": 2500,
+                "price_references": [
+                    "https://reverb.com/p/roland-mks-80-super-jupiter",
+                    "https://reverb.com/marketplace?query=Roland%20MKS-80&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20MKS-80&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 5,
+                "liquidity_score": 4,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland rack",
+                    "sound module",
+                    "studio module"
+                ],
+                "search_keywords": [
+                    "MKS-80",
+                    "MKS80",
+                    "Super Jupiter"
+                ],
+                "missing_keywords": [
+                    "rare",
+                    "analog"
+                ]
+            },
+            "notes": "Usually priced correctly; include mainly as a long-shot watch item."
+        },
+        {
+            "name": "Matrix-1000",
+            "brand": "Oberheim",
+            "category": "synthesizer",
+            "subtype": "rack analog polyphonic",
+            "year_range": [
+                1987,
+                1989
+            ],
+            "architecture": "analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1200,
+                "good_deal_price_eur": 750,
+                "steal_price_eur": 450,
+                "price_references": [
+                    "https://reverb.com/p/oberheim-matrix-1000",
+                    "https://reverb.com/marketplace?query=Oberheim%20Matrix-1000&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Oberheim%20Matrix-1000&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "rack sound module",
+                    "MIDI rack",
+                    "old rack synth"
+                ],
+                "search_keywords": [
+                    "Matrix-1000",
+                    "Matrix 1000",
+                    "Oberheim rack"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "Matrix"
+                ]
+            },
+            "notes": "Rack-module undervaluation effect; some sellers don’t know Oberheim cachet."
+        },
+        {
+            "name": "ESQ-1",
+            "brand": "Ensoniq",
+            "category": "synthesizer",
+            "subtype": "hybrid",
+            "year_range": [
+                1986,
+                1988
+            ],
+            "architecture": "digital oscillators with analog filter + sequencer",
+            "market": {
+                "avg_market_price_eur": 700,
+                "good_deal_price_eur": 420,
+                "steal_price_eur": 250,
+                "price_references": [
+                    "https://reverb.com/p/ensoniq-esq-1",
+                    "https://reverb.com/marketplace?query=Ensoniq%20ESQ-1&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Ensoniq%20ESQ-1&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Ensoniq keyboard",
+                    "workstation",
+                    "old synth",
+                    "MIDI keyboard"
+                ],
+                "search_keywords": [
+                    "ESQ-1",
+                    "ESQ1",
+                    "Ensoniq ESQ"
+                ],
+                "missing_keywords": [
+                    "analog filter",
+                    "vintage"
+                ]
+            },
+            "notes": "Huge value gap because it looks like a 'workstation'. Great candidate for €300–€500 finds."
+        },
+        {
+            "name": "SQ-80",
+            "brand": "Ensoniq",
+            "category": "synthesizer",
+            "subtype": "hybrid",
+            "year_range": [
+                1988,
+                1990
+            ],
+            "architecture": "digital oscillators with analog filter + sequencer",
+            "market": {
+                "avg_market_price_eur": 800,
+                "good_deal_price_eur": 500,
+                "steal_price_eur": 300,
+                "price_references": [
+                    "https://reverb.com/p/ensoniq-sq-80",
+                    "https://reverb.com/marketplace?query=Ensoniq%20SQ-80&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Ensoniq%20SQ-80&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Ensoniq keyboard",
+                    "old workstation",
+                    "MIDI keyboard"
+                ],
+                "search_keywords": [
+                    "SQ-80",
+                    "SQ80",
+                    "Ensoniq SQ"
+                ],
+                "missing_keywords": [
+                    "analog filter",
+                    "vintage synth"
+                ]
+            },
+            "notes": "Often priced like a generic workstation; cult following keeps resale strong."
+        },
+        {
+            "name": "K3",
+            "brand": "Kawai",
+            "category": "synthesizer",
+            "subtype": "hybrid",
+            "year_range": [
+                1986,
+                1988
+            ],
+            "architecture": "digital oscillators with analog filter",
+            "market": {
+                "avg_market_price_eur": 800,
+                "good_deal_price_eur": 500,
+                "steal_price_eur": 280,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Kawai%20K3&condition=used",
+                    "https://reverb.com/marketplace?query=Kawai%20K3&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Kawai%20K3&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Kawai keyboard",
+                    "digital synth",
+                    "old Kawai"
+                ],
+                "search_keywords": [
+                    "Kawai K3",
+                    "K3 synth",
+                    "K3 keyboard"
+                ],
+                "missing_keywords": [
+                    "analog filter",
+                    "vintage"
+                ]
+            },
+            "notes": "Underrated; sellers often assume it's a low-value digital keyboard."
+        },
+        {
+            "name": "TR-505",
+            "brand": "Roland",
+            "category": "drum machine",
+            "subtype": "digital drum machine",
+            "year_range": [
+                1986,
+                1988
+            ],
+            "architecture": "PCM digital drum machine",
+            "market": {
+                "avg_market_price_eur": 450,
+                "good_deal_price_eur": 250,
+                "steal_price_eur": 150,
+                "price_references": [
+                    "https://reverb.com/p/roland-tr-505",
+                    "https://reverb.com/marketplace?query=Roland%20TR-505&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20TR-505&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 2,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "drum computer",
+                    "rhythm machine",
+                    "Roland rhythm"
+                ],
+                "search_keywords": [
+                    "TR-505",
+                    "TR505",
+                    "Roland 505"
+                ],
+                "missing_keywords": [
+                    "TR",
+                    "vintage"
+                ]
+            },
+            "notes": "Not usually a €1000 item, but can be a cheap add-on flip when bundled."
+        },
+        {
+            "name": "TR-626",
+            "brand": "Roland",
+            "category": "drum machine",
+            "subtype": "digital drum machine",
+            "year_range": [
+                1987,
+                1990
+            ],
+            "architecture": "PCM digital drum machine",
+            "market": {
+                "avg_market_price_eur": 500,
+                "good_deal_price_eur": 300,
+                "steal_price_eur": 180,
+                "price_references": [
+                    "https://reverb.com/p/roland-tr-626",
+                    "https://reverb.com/marketplace?query=Roland%20TR-626&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20TR-626&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 2,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "rhythm machine",
+                    "drum computer",
+                    "Roland drums"
+                ],
+                "search_keywords": [
+                    "TR-626",
+                    "TR626",
+                    "Roland 626"
+                ],
+                "missing_keywords": [
+                    "TR",
+                    "vintage"
+                ]
+            },
+            "notes": "Often confused with low-end drum boxes; value varies by condition."
+        },
+        {
+            "name": "TR-707",
+            "brand": "Roland",
+            "category": "drum machine",
+            "subtype": "digital drum machine",
+            "year_range": [
+                1984,
+                1986
+            ],
+            "architecture": "PCM digital drum machine",
+            "market": {
+                "avg_market_price_eur": 700,
+                "good_deal_price_eur": 430,
+                "steal_price_eur": 260,
+                "price_references": [
+                    "https://reverb.com/p/roland-tr-707-rhythm-composer-drum-machine",
+                    "https://reverb.com/marketplace?query=Roland%20TR-707&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20TR-707&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "rhythm machine",
+                    "drum computer",
+                    "Roland rhythm",
+                    "707 drum"
+                ],
+                "search_keywords": [
+                    "TR-707",
+                    "TR707",
+                    "Roland 707"
+                ],
+                "missing_keywords": [
+                    "TR",
+                    "vintage",
+                    "classic"
+                ]
+            },
+            "notes": "Solid €200–€400 bargain potential when sellers don’t track vintage drum prices."
+        },
+        {
+            "name": "TR-727",
+            "brand": "Roland",
+            "category": "drum machine",
+            "subtype": "digital drum machine",
+            "year_range": [
+                1984,
+                1986
+            ],
+            "architecture": "PCM digital drum machine",
+            "market": {
+                "avg_market_price_eur": 800,
+                "good_deal_price_eur": 500,
+                "steal_price_eur": 300,
+                "price_references": [
+                    "https://reverb.com/p/roland-tr-727-latin-drum-machine",
+                    "https://reverb.com/marketplace?query=Roland%20TR-727&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20TR-727&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Latin drum machine",
+                    "rhythm machine",
+                    "drum computer"
+                ],
+                "search_keywords": [
+                    "TR-727",
+                    "TR727",
+                    "Roland 727"
+                ],
+                "missing_keywords": [
+                    "TR",
+                    "vintage"
+                ]
+            },
+            "notes": "Often misunderstood as a niche percussion box; still valuable to collectors/producers."
+        },
+        {
+            "name": "S950",
+            "brand": "Akai",
+            "category": "sampler",
+            "subtype": "rack sampler",
+            "year_range": [
+                1988,
+                1992
+            ],
+            "architecture": "12-bit sampler with analog coloration",
+            "market": {
+                "avg_market_price_eur": 1050,
+                "good_deal_price_eur": 650,
+                "steal_price_eur": 380,
+                "price_references": [
+                    "https://reverb.com/p/akai-s950",
+                    "https://reverb.com/marketplace?query=Akai%20S950&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Akai%20S950&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "old rack sampler",
+                    "Akai rack",
+                    "studio sampler",
+                    "sound module"
+                ],
+                "search_keywords": [
+                    "S950",
+                    "Akai S950",
+                    "Akai sampler rack"
+                ],
+                "missing_keywords": [
+                    "12-bit",
+                    "vintage",
+                    "hip hop"
+                ]
+            },
+            "notes": "Classic cult sampler; rack gear + 'obsolete' perception creates frequent undervaluation."
+        },
+        {
+            "name": "S900",
+            "brand": "Akai",
+            "category": "sampler",
+            "subtype": "rack sampler",
+            "year_range": [
+                1986,
+                1989
+            ],
+            "architecture": "12-bit sampler",
+            "market": {
+                "avg_market_price_eur": 700,
+                "good_deal_price_eur": 430,
+                "steal_price_eur": 250,
+                "price_references": [
+                    "https://reverb.com/p/akai-s900",
+                    "https://reverb.com/marketplace?query=Akai%20S900&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Akai%20S900&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "old sampler",
+                    "Akai rack",
+                    "studio rack",
+                    "sound module"
+                ],
+                "search_keywords": [
+                    "S900",
+                    "Akai S900",
+                    "Akai sampler"
+                ],
+                "missing_keywords": [
+                    "12-bit",
+                    "vintage sampler"
+                ]
+            },
+            "notes": "Often sold cheap when untested; good candidate if you can verify it boots and loads."
+        },
+        {
+            "name": "SDS-V (modules)",
+            "brand": "Simmons",
+            "category": "drum synth",
+            "subtype": "analog drum synthesis",
+            "year_range": [
+                1981,
+                1985
+            ],
+            "architecture": "analog drum synthesis modules",
+            "market": {
+                "avg_market_price_eur": 1900,
+                "good_deal_price_eur": 1300,
+                "steal_price_eur": 850,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Simmons%20SDS-V%20modules&condition=used",
+                    "https://reverb.com/marketplace?query=Simmons%20SDS-V&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Simmons%20SDS-V&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 3,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "old drum pads",
+                    "drum brain",
+                    "electronic drums",
+                    "Simmons drums"
+                ],
+                "search_keywords": [
+                    "SDS-V",
+                    "SDS V",
+                    "Simmons SDS"
+                ],
+                "missing_keywords": [
+                    "modules",
+                    "vintage",
+                    "analog"
+                ]
+            },
+            "notes": "Sometimes sold as incomplete electronic drum junk; modules/brain/pads split listings are opportunities."
+        },
+        {
+            "name": "SDS-9",
+            "brand": "Simmons",
+            "category": "drum synth",
+            "subtype": "electronic drums",
+            "year_range": [
+                1985,
+                1989
+            ],
+            "architecture": "analog/digital hybrid drum synthesis (brain + pads)",
+            "market": {
+                "avg_market_price_eur": 1000,
+                "good_deal_price_eur": 650,
+                "steal_price_eur": 380,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Simmons%20SDS-9&condition=used",
+                    "https://reverb.com/marketplace?query=Simmons%20SDS-9&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Simmons%20SDS-9&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "old electronic drums",
+                    "drum kit",
+                    "drum pads",
+                    "Simmons kit",
+                    "Schlagzeug"
+                ],
+                "search_keywords": [
+                    "SDS-9",
+                    "SDS9",
+                    "Simmons SDS9",
+                    "Simmons drums"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "analog drums"
+                ]
+            },
+            "notes": "Most common Simmons on the secondhand market; often sold incomplete (brain only or pads only) at low prices."
+        },
+        {
+            "name": "MS-10",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "semi-modular analog",
+            "year_range": [
+                1978,
+                1981
+            ],
+            "architecture": "semi-modular analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1200,
+                "good_deal_price_eur": 850,
+                "steal_price_eur": 550,
+                "price_references": [
+                    "https://reverb.com/p/korg-ms-10",
+                    "https://reverb.com/marketplace?query=Korg%20MS-10&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20MS-10&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg synth",
+                    "old Korg",
+                    "vintage keyboard",
+                    "patch synth"
+                ],
+                "search_keywords": [
+                    "MS-10",
+                    "MS10",
+                    "Korg MS10"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "semi-modular"
+                ]
+            },
+            "notes": "Occasionally undervalued when listed without model clarity; smaller than MS-20 so easier logistics."
+        },
+        {
+            "name": "Axxe",
+            "brand": "ARP",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1975,
+                1981
+            ],
+            "architecture": "VCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 900,
+                "good_deal_price_eur": 600,
+                "steal_price_eur": 380,
+                "price_references": [
+                    "https://reverb.com/p/arp-axxe",
+                    "https://reverb.com/marketplace?query=ARP%20Axxe&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=ARP%20Axxe&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 5,
+                "liquidity_score": 3,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "ARP synth",
+                    "vintage keyboard",
+                    "old synth"
+                ],
+                "search_keywords": [
+                    "ARP Axxe",
+                    "Axxe synth",
+                    "ARP"
+                ],
+                "missing_keywords": [
+                    "rare",
+                    "analog"
+                ]
+            },
+            "notes": "True steals are rare; more likely via estate/studio clearance with poor listing details."
+        },
+        {
+            "name": "Odyssey (early versions)",
+            "brand": "ARP",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1972,
+                1981
+            ],
+            "architecture": "dual VCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 3000,
+                "good_deal_price_eur": 2200,
+                "steal_price_eur": 1500,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=ARP%20Odyssey%20early%20versions&condition=used",
+                    "https://reverb.com/marketplace?query=ARP%20Odyssey&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=ARP%20Odyssey&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 5,
+                "liquidity_score": 4,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "ARP keyboard",
+                    "vintage synth",
+                    "old keyboard"
+                ],
+                "search_keywords": [
+                    "ARP Odyssey",
+                    "Odyssey synth",
+                    "ARP 2810"
+                ],
+                "missing_keywords": [
+                    "early",
+                    "rev",
+                    "rare"
+                ]
+            },
+            "notes": "Usually priced correctly; keep as a high-upside watch item for badly titled listings."
+        },
+        {
+            "name": "Pianet T",
+            "brand": "Hohner",
+            "category": "keyboard",
+            "subtype": "electromechanical piano",
+            "year_range": [
+                1977,
+                1983
+            ],
+            "architecture": "electrostatic reed pickup",
+            "market": {
+                "avg_market_price_eur": 1400,
+                "good_deal_price_eur": 950,
+                "steal_price_eur": 600,
+                "price_references": [
+                    "https://reverb.com/p/hohner-pianet-t-1977",
+                    "https://reverb.com/marketplace?query=Hohner%20Pianet%20T&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Hohner%20Pianet%20T&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Hohner keyboard",
+                    "electric piano",
+                    "old organ",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "Pianet T",
+                    "Hohner Pianet",
+                    "Pianet keyboard"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "electromechanical"
+                ]
+            },
+            "notes": "Smaller and lighter than Rhodes; often misidentified by non-musicians."
+        },
+        {
+            "name": "Pianet N",
+            "brand": "Hohner",
+            "category": "keyboard",
+            "subtype": "electromechanical piano",
+            "year_range": [
+                1965,
+                1975
+            ],
+            "architecture": "electrostatic reed pickup",
+            "market": {
+                "avg_market_price_eur": 1700,
+                "good_deal_price_eur": 1100,
+                "steal_price_eur": 700,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Hohner%20Pianet%20N&condition=used",
+                    "https://reverb.com/marketplace?query=Hohner%20Pianet%20N&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Hohner%20Pianet%20N&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Hohner organ",
+                    "old electric piano",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "Pianet N",
+                    "Hohner Pianet N",
+                    "Pianet"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "reed piano"
+                ]
+            },
+            "notes": "Used by Beatles and others; sometimes sold as a generic organ."
+        },
+        {
+            "name": "Stage 73",
+            "brand": "Fender Rhodes",
+            "category": "keyboard",
+            "subtype": "electromechanical piano",
+            "year_range": [
+                1969,
+                1984
+            ],
+            "architecture": "tine electric piano",
+            "market": {
+                "avg_market_price_eur": 2200,
+                "good_deal_price_eur": 1500,
+                "steal_price_eur": 950,
+                "price_references": [
+                    "https://reverb.com/p/rhodes-mark-i-stage-73-key-electric-piano",
+                    "https://reverb.com/marketplace?query=Fender%20Rhodes%20Stage%2073&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Fender%20Rhodes%20Stage%2073&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Fender piano",
+                    "electric piano",
+                    "old keyboard",
+                    "stage piano"
+                ],
+                "search_keywords": [
+                    "Rhodes 73",
+                    "Stage 73",
+                    "Fender Rhodes"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "Rhodes"
+                ]
+            },
+            "notes": "Shipping weight causes some sellers to list cheaply for local pickup."
+        },
+        {
+            "name": "Suitcase 73",
+            "brand": "Fender Rhodes",
+            "category": "keyboard",
+            "subtype": "electromechanical piano",
+            "year_range": [
+                1969,
+                1984
+            ],
+            "architecture": "tine electric piano with amplifier",
+            "market": {
+                "avg_market_price_eur": 2600,
+                "good_deal_price_eur": 1800,
+                "steal_price_eur": 1100,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Fender%20Rhodes%20Suitcase%2073&condition=used",
+                    "https://reverb.com/marketplace?query=Fender%20Rhodes%20Suitcase%2073&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Fender%20Rhodes%20Suitcase%2073&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Rhodes piano",
+                    "electric piano",
+                    "old stage piano"
+                ],
+                "search_keywords": [
+                    "Rhodes suitcase",
+                    "Suitcase 73",
+                    "Rhodes piano"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "Fender"
+                ]
+            },
+            "notes": "Large footprint often leads to quick-sale pricing."
+        },
+        {
+            "name": "MK I Stage 88",
+            "brand": "Fender Rhodes",
+            "category": "keyboard",
+            "subtype": "electromechanical piano",
+            "year_range": [
+                1975,
+                1980
+            ],
+            "architecture": "tine electric piano",
+            "market": {
+                "avg_market_price_eur": 2300,
+                "good_deal_price_eur": 1600,
+                "steal_price_eur": 1000,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Fender%20Rhodes%20MK%20I%20Stage%2088&condition=used",
+                    "https://reverb.com/marketplace?query=Fender%20Rhodes%20MK%20I%20Stage%2088&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Fender%20Rhodes%20MK%20I%20Stage%2088&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "electric piano",
+                    "Rhodes keyboard",
+                    "stage keyboard"
+                ],
+                "search_keywords": [
+                    "Rhodes 88",
+                    "MK1 Rhodes",
+                    "Stage 88"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "Fender Rhodes"
+                ]
+            },
+            "notes": "Heavy; sellers sometimes accept lower local prices."
+        },
+        {
+            "name": "SM7",
+            "brand": "Shure",
+            "category": "microphone",
+            "subtype": "dynamic studio microphone",
+            "year_range": [
+                1973,
+                1990
+            ],
+            "architecture": "moving coil dynamic",
+            "market": {
+                "avg_market_price_eur": 600,
+                "good_deal_price_eur": 400,
+                "steal_price_eur": 250,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Shure%20SM7&condition=used",
+                    "https://reverb.com/marketplace?query=Shure%20SM7&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Shure%20SM7&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "studio microphone",
+                    "broadcast mic",
+                    "Shure mic"
+                ],
+                "search_keywords": [
+                    "Shure SM7",
+                    "SM7 mic",
+                    "broadcast microphone"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "studio"
+                ]
+            },
+            "notes": "Predecessor of SM7B; some sellers don't know the value difference."
+        },
+        {
+            "name": "RE20",
+            "brand": "Electro-Voice",
+            "category": "microphone",
+            "subtype": "broadcast dynamic microphone",
+            "year_range": [
+                1968,
+                1990
+            ],
+            "architecture": "variable-D dynamic",
+            "market": {
+                "avg_market_price_eur": 400,
+                "good_deal_price_eur": 280,
+                "steal_price_eur": 150,
+                "price_references": [
+                    "https://reverb.com/p/electro-voice-re20",
+                    "https://reverb.com/marketplace?query=Electro-Voice%20RE20&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Electro-Voice%20RE20&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "radio microphone",
+                    "studio mic",
+                    "broadcast mic"
+                ],
+                "search_keywords": [
+                    "RE20",
+                    "Electro Voice mic",
+                    "EV microphone"
+                ],
+                "missing_keywords": [
+                    "broadcast",
+                    "classic"
+                ]
+            },
+            "notes": "Very liquid resale market; common in studio closures."
+        },
+        {
+            "name": "MD 421",
+            "brand": "Sennheiser",
+            "category": "microphone",
+            "subtype": "dynamic studio microphone",
+            "year_range": [
+                1960,
+                1980
+            ],
+            "architecture": "moving coil dynamic",
+            "market": {
+                "avg_market_price_eur": 700,
+                "good_deal_price_eur": 450,
+                "steal_price_eur": 250,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Sennheiser%20MD%20421&condition=used",
+                    "https://reverb.com/marketplace?query=Sennheiser%20MD%20421&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Sennheiser%20MD%20421&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Sennheiser microphone",
+                    "vintage mic",
+                    "studio mic"
+                ],
+                "search_keywords": [
+                    "MD421",
+                    "MD 421",
+                    "Sennheiser 421"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "broadcast"
+                ]
+            },
+            "notes": "Vintage white versions especially valuable."
+        },
+        {
+            "name": "U87 (early models)",
+            "brand": "Neumann",
+            "category": "microphone",
+            "subtype": "large diaphragm condenser",
+            "year_range": [
+                1967,
+                1985
+            ],
+            "architecture": "FET condenser",
+            "market": {
+                "avg_market_price_eur": 2800,
+                "good_deal_price_eur": 2000,
+                "steal_price_eur": 1400,
+                "price_references": [
+                    "https://reverb.com/p/vintage-neumann-u-87",
+                    "https://reverb.com/marketplace?query=Neumann%20U87&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Neumann%20U87&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Neumann microphone",
+                    "studio condenser",
+                    "recording mic"
+                ],
+                "search_keywords": [
+                    "U87",
+                    "Neumann U87",
+                    "studio condenser mic"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "original"
+                ]
+            },
+            "notes": "Rarely mispriced but extremely profitable if found under market."
+        },
+        {
+            "name": "RE-201 Space Echo",
+            "brand": "Roland",
+            "category": "effect",
+            "subtype": "tape echo",
+            "year_range": [
+                1974,
+                1990
+            ],
+            "architecture": "analog tape delay + spring reverb",
+            "market": {
+                "avg_market_price_eur": 1800,
+                "good_deal_price_eur": 1200,
+                "steal_price_eur": 750,
+                "price_references": [
+                    "https://reverb.com/p/roland-re-201-space-echo",
+                    "https://reverb.com/marketplace?query=Roland%20RE-201%20Space%20Echo&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20RE-201%20Space%20Echo&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "old echo",
+                    "tape machine",
+                    "Roland tape",
+                    "reel echo",
+                    "studio echo"
+                ],
+                "search_keywords": [
+                    "RE-201",
+                    "Space Echo",
+                    "Roland echo",
+                    "Roland tape echo"
+                ],
+                "missing_keywords": [
+                    "space echo",
+                    "tape delay",
+                    "spring reverb"
+                ]
+            },
+            "notes": "High demand; bargains mostly appear as 'untested' or poorly titled local-pickup listings."
+        },
+        {
+            "name": "RE-301 Chorus Echo",
+            "brand": "Roland",
+            "category": "effect",
+            "subtype": "tape echo",
+            "year_range": [
+                1978,
+                1981
+            ],
+            "architecture": "analog tape delay + spring reverb + chorus",
+            "market": {
+                "avg_market_price_eur": 2000,
+                "good_deal_price_eur": 1400,
+                "steal_price_eur": 900,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Roland%20RE-301%20Chorus%20Echo&condition=used",
+                    "https://reverb.com/marketplace?query=Roland%20RE-301%20Chorus%20Echo&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20RE-301%20Chorus%20Echo&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland echo",
+                    "tape echo",
+                    "old studio effect",
+                    "reel echo"
+                ],
+                "search_keywords": [
+                    "RE-301",
+                    "Chorus Echo",
+                    "Roland RE301"
+                ],
+                "missing_keywords": [
+                    "chorus echo",
+                    "space echo"
+                ]
+            },
+            "notes": "Often valued as 'like a Space Echo but better' by buyers; sellers may not know the model difference."
+        },
+        {
+            "name": "Echocord Mini / Super (tape echo units)",
+            "brand": "Dynacord",
+            "category": "effect",
+            "subtype": "tape echo",
+            "year_range": [
+                1965,
+                1975
+            ],
+            "architecture": "analog tape delay",
+            "market": {
+                "avg_market_price_eur": 1100,
+                "good_deal_price_eur": 700,
+                "steal_price_eur": 420,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Dynacord%20Echocord%20Mini%20%20%20Super%20tape%20echo%20units&condition=used",
+                    "https://reverb.com/marketplace?query=Dynacord%20Echocord%20Mini%20/%20Super&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Dynacord%20Echocord%20Mini%20/%20Super&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Dynacord echo",
+                    "old tape machine",
+                    "echo box",
+                    "vintage echo"
+                ],
+                "search_keywords": [
+                    "Dynacord Echocord",
+                    "Echocord",
+                    "Dynacord tape echo"
+                ],
+                "missing_keywords": [
+                    "tape echo",
+                    "delay"
+                ]
+            },
+            "notes": "German market sometimes has local underpricing; watch for 'works but needs service' listings."
+        },
+        {
+            "name": "EP-3 Echoplex",
+            "brand": "Maestro",
+            "category": "effect",
+            "subtype": "tape echo",
+            "year_range": [
+                1969,
+                1978
+            ],
+            "architecture": "analog tape delay (preamp coloration prized)",
+            "market": {
+                "avg_market_price_eur": 1200,
+                "good_deal_price_eur": 800,
+                "steal_price_eur": 500,
+                "price_references": [
+                    "https://reverb.com/p/maestro-echoplex-ep-3-solid-state",
+                    "https://reverb.com/marketplace?query=Maestro%20EP-3%20Echoplex&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Maestro%20EP-3%20Echoplex&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "old echo",
+                    "tape delay",
+                    "Echoplex tape",
+                    "guitar echo"
+                ],
+                "search_keywords": [
+                    "Echoplex EP-3",
+                    "EP3",
+                    "Maestro Echoplex"
+                ],
+                "missing_keywords": [
+                    "EP-3",
+                    "preamp"
+                ]
+            },
+            "notes": "Usually priced correctly; steals mostly happen when listed vaguely as 'tape echo' with poor photos."
+        },
+        {
+            "name": "Deluxe Memory Man (big box, vintage)",
+            "brand": "Electro-Harmonix",
+            "category": "effect",
+            "subtype": "analog delay pedal",
+            "year_range": [
+                1978,
+                1990
+            ],
+            "architecture": "BBD analog delay",
+            "market": {
+                "avg_market_price_eur": 750,
+                "good_deal_price_eur": 500,
+                "steal_price_eur": 300,
+                "price_references": [
+                    "https://reverb.com/p/electro-harmonix-deluxe-memory-man",
+                    "https://reverb.com/marketplace?query=Electro-Harmonix%20Deluxe%20Memory%20Man&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Electro-Harmonix%20Deluxe%20Memory%20Man&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "EHX delay",
+                    "old delay pedal",
+                    "guitar effect",
+                    "electro harmonix pedal"
+                ],
+                "search_keywords": [
+                    "Deluxe Memory Man",
+                    "Memory Man",
+                    "EHX big box delay"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "BBD",
+                    "vintage"
+                ]
+            },
+            "notes": "Sellers sometimes price like a generic delay; vintage big-box versions have collector pull."
+        },
+        {
+            "name": "Electric Mistress (vintage, big box)",
+            "brand": "Electro-Harmonix",
+            "category": "effect",
+            "subtype": "flanger pedal",
+            "year_range": [
+                1976,
+                1982
+            ],
+            "architecture": "analog flanger",
+            "market": {
+                "avg_market_price_eur": 550,
+                "good_deal_price_eur": 350,
+                "steal_price_eur": 200,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Electro-Harmonix%20Electric%20Mistress%20vintage%2C%20big%20box&condition=used",
+                    "https://reverb.com/marketplace?query=Electro-Harmonix%20Electric%20Mistress&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Electro-Harmonix%20Electric%20Mistress&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "EHX pedal",
+                    "flanger",
+                    "guitar effect",
+                    "old effect pedal"
+                ],
+                "search_keywords": [
+                    "Electric Mistress",
+                    "EHX Mistress",
+                    "big box Mistress"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "big box"
+                ]
+            },
+            "notes": "Big-box form factor can deter casual buyers; creates occasional bargains."
+        },
+        {
+            "name": "Phase 90 (script logo era)",
+            "brand": "MXR",
+            "category": "effect",
+            "subtype": "phaser pedal",
+            "year_range": [
+                1974,
+                1979
+            ],
+            "architecture": "analog phaser",
+            "market": {
+                "avg_market_price_eur": 500,
+                "good_deal_price_eur": 320,
+                "steal_price_eur": 180,
+                "price_references": [
+                    "https://reverb.com/p/mxr-phase-90",
+                    "https://reverb.com/marketplace?query=MXR%20Phase%2090&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=MXR%20Phase%2090&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "MXR phaser",
+                    "old MXR pedal",
+                    "phaser pedal",
+                    "guitar effect"
+                ],
+                "search_keywords": [
+                    "MXR Phase 90 script",
+                    "script Phase 90",
+                    "MXR script"
+                ],
+                "missing_keywords": [
+                    "script",
+                    "vintage"
+                ]
+            },
+            "notes": "‘Script’ vs later versions is often missed in listings; photos are key."
+        },
+        {
+            "name": "Distortion+ (vintage)",
+            "brand": "MXR",
+            "category": "effect",
+            "subtype": "distortion pedal",
+            "year_range": [
+                1974,
+                1981
+            ],
+            "architecture": "analog distortion",
+            "market": {
+                "avg_market_price_eur": 350,
+                "good_deal_price_eur": 220,
+                "steal_price_eur": 120,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=MXR%20Distortion%2B%20vintage&condition=used",
+                    "https://reverb.com/marketplace?query=MXR%20Distortion%2B&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=MXR%20Distortion%2B&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "MXR distortion",
+                    "old pedal",
+                    "guitar distortion",
+                    "vintage pedal"
+                ],
+                "search_keywords": [
+                    "MXR Distortion+",
+                    "Distortion Plus",
+                    "MXR vintage"
+                ],
+                "missing_keywords": [
+                    "Distortion+",
+                    "script"
+                ]
+            },
+            "notes": "Often bundled with other pedals; good target in lot listings."
+        },
+        {
+            "name": "PCM 41",
+            "brand": "Lexicon",
+            "category": "effect",
+            "subtype": "rack delay",
+            "year_range": [
+                1980,
+                1986
+            ],
+            "architecture": "digital delay (studio standard)",
+            "market": {
+                "avg_market_price_eur": 800,
+                "good_deal_price_eur": 500,
+                "steal_price_eur": 320,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Lexicon%20PCM%2041&condition=used",
+                    "https://reverb.com/marketplace?query=Lexicon%20PCM%2041&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Lexicon%20PCM%2041&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "studio rack",
+                    "delay unit",
+                    "sound module",
+                    "rack effect"
+                ],
+                "search_keywords": [
+                    "Lexicon PCM 41",
+                    "PCM41",
+                    "Lexicon delay"
+                ],
+                "missing_keywords": [
+                    "Lexicon",
+                    "PCM"
+                ]
+            },
+            "notes": "Rack gear undervaluation is real; listings titled only 'delay unit' can be underpriced."
+        },
+        {
+            "name": "PCM 70",
+            "brand": "Lexicon",
+            "category": "effect",
+            "subtype": "rack reverb/multi-effects",
+            "year_range": [
+                1986,
+                1993
+            ],
+            "architecture": "digital reverb/multi-effects (classic presets)",
+            "market": {
+                "avg_market_price_eur": 950,
+                "good_deal_price_eur": 600,
+                "steal_price_eur": 380,
+                "price_references": [
+                    "https://reverb.com/p/lexicon-pcm-70",
+                    "https://reverb.com/marketplace?query=Lexicon%20PCM%2070&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Lexicon%20PCM%2070&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "reverb unit",
+                    "studio rack",
+                    "effects processor",
+                    "rack reverb"
+                ],
+                "search_keywords": [
+                    "PCM 70",
+                    "PCM70",
+                    "Lexicon reverb"
+                ],
+                "missing_keywords": [
+                    "Lexicon",
+                    "PCM"
+                ]
+            },
+            "notes": "Very liquid; some sellers treat it like any old rack processor."
+        },
+        {
+            "name": "H3000 (various revisions)",
+            "brand": "Eventide",
+            "category": "effect",
+            "subtype": "rack multi-effects / pitch shifter",
+            "year_range": [
+                1987,
+                1995
+            ],
+            "architecture": "digital multi-effects (pitch/time/modulation)",
+            "market": {
+                "avg_market_price_eur": 1900,
+                "good_deal_price_eur": 1300,
+                "steal_price_eur": 850,
+                "price_references": [
+                    "https://reverb.com/p/eventide-h3000",
+                    "https://reverb.com/marketplace?query=Eventide%20H3000&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Eventide%20H3000&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "studio effects",
+                    "rack processor",
+                    "harmonizer",
+                    "effects unit"
+                ],
+                "search_keywords": [
+                    "Eventide H3000",
+                    "H3000",
+                    "Eventide harmonizer"
+                ],
+                "missing_keywords": [
+                    "Eventide",
+                    "H3000"
+                ]
+            },
+            "notes": "Steals happen when listed generically as 'harmonizer' with no model; check front panel photos."
+        },
+        {
+            "name": "SDE-1000 / SDE-2000",
+            "brand": "Roland",
+            "category": "effect",
+            "subtype": "rack digital delay",
+            "year_range": [
+                1983,
+                1987
+            ],
+            "architecture": "digital delay (early rack era)",
+            "market": {
+                "avg_market_price_eur": 500,
+                "good_deal_price_eur": 300,
+                "steal_price_eur": 180,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Roland%20SDE-1000%20%20%20SDE-2000&condition=used",
+                    "https://reverb.com/marketplace?query=Roland%20SDE-1000%20/%20SDE-2000&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20SDE-1000%20/%20SDE-2000&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "rack delay",
+                    "studio rack",
+                    "delay unit",
+                    "Roland rack"
+                ],
+                "search_keywords": [
+                    "SDE-1000",
+                    "SDE-2000",
+                    "Roland SDE"
+                ],
+                "missing_keywords": [
+                    "SDE",
+                    "delay"
+                ]
+            },
+            "notes": "Good underpricing frequency because many buyers chase only tape echos; these are often 'cheap rack delays' to sellers."
+        },
+        {
+            "name": "Polysix",
+            "brand": "Korg",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1981,
+                1985
+            ],
+            "architecture": "VCO analog subtractive with built-in chorus",
+            "market": {
+                "avg_market_price_eur": 1300,
+                "good_deal_price_eur": 850,
+                "steal_price_eur": 500,
+                "price_references": [
+                    "https://reverb.com/p/korg-polysix",
+                    "https://reverb.com/marketplace?query=Korg%20Polysix&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Korg%20Polysix&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Korg keyboard",
+                    "old synth",
+                    "80s keyboard",
+                    "polyphonic keyboard",
+                    "altes Keyboard"
+                ],
+                "search_keywords": [
+                    "Polysix",
+                    "Poly-6",
+                    "Korg Polysix",
+                    "PS-6"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage"
+                ]
+            },
+            "notes": "Famous for warm chorus; battery leakage is common, so 'defective' units can be great deals if only the battery needs replacing."
+        },
+        {
+            "name": "Juno-6",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1982,
+                1983
+            ],
+            "architecture": "DCO analog subtractive with built-in chorus",
+            "market": {
+                "avg_market_price_eur": 1800,
+                "good_deal_price_eur": 1100,
+                "steal_price_eur": 700,
+                "price_references": [
+                    "https://reverb.com/p/roland-juno-6-analog-synthesizer",
+                    "https://reverb.com/marketplace?query=Roland%20Juno-6&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20Juno-6&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland keyboard",
+                    "old synth",
+                    "80s keyboard",
+                    "altes Keyboard"
+                ],
+                "search_keywords": [
+                    "Juno-6",
+                    "Juno 6",
+                    "Juno6",
+                    "Roland Juno"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage"
+                ]
+            },
+            "notes": "No MIDI makes some sellers heavily discount it; the built-in chorus is iconic. Often confused with cheaper Juno models."
+        },
+        {
+            "name": "Juno-60",
+            "brand": "Roland",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1982,
+                1984
+            ],
+            "architecture": "DCO analog subtractive with built-in chorus",
+            "market": {
+                "avg_market_price_eur": 2800,
+                "good_deal_price_eur": 2000,
+                "steal_price_eur": 1400,
+                "price_references": [
+                    "https://reverb.com/p/roland-juno-60",
+                    "https://reverb.com/marketplace?query=Roland%20Juno-60&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20Juno-60&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Roland keyboard",
+                    "Juno keyboard",
+                    "old synth",
+                    "80s keyboard"
+                ],
+                "search_keywords": [
+                    "Juno-60",
+                    "Juno 60",
+                    "Juno60",
+                    "Roland Juno"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage",
+                    "classic"
+                ]
+            },
+            "notes": "Usually priced correctly but occasionally appears in estate/studio clearance listings; MIDI retrofit adds value."
+        },
+        {
+            "name": "Prophet-600",
+            "brand": "Sequential Circuits",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1982,
+                1985
+            ],
+            "architecture": "VCO/DCO hybrid analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1800,
+                "good_deal_price_eur": 1200,
+                "steal_price_eur": 750,
+                "price_references": [
+                    "https://reverb.com/p/sequential-circuits-prophet-600",
+                    "https://reverb.com/marketplace?query=Sequential%20Circuits%20Prophet-600&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Sequential%20Circuits%20Prophet-600&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Sequential keyboard",
+                    "old synth",
+                    "vintage keyboard",
+                    "Prophet synth"
+                ],
+                "search_keywords": [
+                    "Prophet-600",
+                    "Prophet 600",
+                    "Sequential Circuits Prophet",
+                    "Sequential Prophet"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "Sequential"
+                ]
+            },
+            "notes": "GliGli firmware upgrade increases desirability; sometimes sold without knowing the Sequential pedigree."
+        },
+        {
+            "name": "Six-Trak",
+            "brand": "Sequential Circuits",
+            "category": "synthesizer",
+            "subtype": "analog polyphonic",
+            "year_range": [
+                1984,
+                1986
+            ],
+            "architecture": "VCO analog subtractive with multi-timbral sequencer",
+            "market": {
+                "avg_market_price_eur": 800,
+                "good_deal_price_eur": 520,
+                "steal_price_eur": 300,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Sequential%20Circuits%20Six-Trak&condition=used",
+                    "https://reverb.com/marketplace?query=Sequential%20Circuits%20Six-Trak&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Sequential%20Circuits%20Six-Trak&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Sequential keyboard",
+                    "old synth",
+                    "MIDI keyboard",
+                    "80s keyboard"
+                ],
+                "search_keywords": [
+                    "Six-Trak",
+                    "Six Trak",
+                    "SixTrak",
+                    "Sequential Six"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "Sequential Circuits"
+                ]
+            },
+            "notes": "Built-in multi-timbral sequencer is underappreciated; budget Sequential is a real deal magnet."
+        },
+        {
+            "name": "Prodigy",
+            "brand": "Moog",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1979,
+                1984
+            ],
+            "architecture": "dual VCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 1500,
+                "good_deal_price_eur": 1000,
+                "steal_price_eur": 650,
+                "price_references": [
+                    "https://reverb.com/p/moog-prodigy-monophonic-analog-synth",
+                    "https://reverb.com/marketplace?query=Moog%20Prodigy&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Moog%20Prodigy&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Moog keyboard",
+                    "small Moog",
+                    "vintage keyboard",
+                    "Moog synth"
+                ],
+                "search_keywords": [
+                    "Moog Prodigy",
+                    "Prodigy synth",
+                    "Prodigy Moog"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage"
+                ]
+            },
+            "notes": "Small size can mislead sellers about value; Moog brand always has strong resale."
+        },
+        {
+            "name": "Rogue",
+            "brand": "Moog",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1981,
+                1983
+            ],
+            "architecture": "dual VCO analog subtractive",
+            "market": {
+                "avg_market_price_eur": 900,
+                "good_deal_price_eur": 600,
+                "steal_price_eur": 380,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Moog%20Rogue&condition=used",
+                    "https://reverb.com/marketplace?query=Moog%20Rogue&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Moog%20Rogue&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Moog keyboard",
+                    "small synth",
+                    "old Moog",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "Moog Rogue",
+                    "Rogue synth",
+                    "Rogue Moog"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage"
+                ]
+            },
+            "notes": "Cheapest real Moog; looks toy-like so often priced as such."
+        },
+        {
+            "name": "Source",
+            "brand": "Moog",
+            "category": "synthesizer",
+            "subtype": "analog monosynth",
+            "year_range": [
+                1981,
+                1985
+            ],
+            "architecture": "VCO analog subtractive with digital membrane controls",
+            "market": {
+                "avg_market_price_eur": 1800,
+                "good_deal_price_eur": 1200,
+                "steal_price_eur": 750,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Moog%20Source&condition=used",
+                    "https://reverb.com/marketplace?query=Moog%20Source&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Moog%20Source&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Moog keyboard",
+                    "Moog synth",
+                    "old synth",
+                    "vintage keyboard"
+                ],
+                "search_keywords": [
+                    "Moog Source",
+                    "Source synth",
+                    "Source Moog"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "membrane"
+                ]
+            },
+            "notes": "Membrane panel confuses sellers into thinking it's 'broken digital'; actually fully analog signal path."
+        },
+        {
+            "name": "DR-110 (Dr. Rhythm Graphic)",
+            "brand": "Boss",
+            "category": "drum machine",
+            "subtype": "analog drum machine",
+            "year_range": [
+                1983,
+                1985
+            ],
+            "architecture": "analog drum synthesis",
+            "market": {
+                "avg_market_price_eur": 500,
+                "good_deal_price_eur": 300,
+                "steal_price_eur": 150,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Boss%20DR-110%20Dr.%20Rhythm%20Graphic&condition=used",
+                    "https://reverb.com/marketplace?query=Boss%20DR-110&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Boss%20DR-110&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 4
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "drum machine",
+                    "Boss rhythm",
+                    "drum computer",
+                    "beat box",
+                    "Schlagzeugcomputer"
+                ],
+                "search_keywords": [
+                    "DR-110",
+                    "DR110",
+                    "Boss Dr. Rhythm",
+                    "Boss drum",
+                    "Dr Rhythm"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "Dr. Rhythm"
+                ]
+            },
+            "notes": "Tiny and plastic-looking; sellers often list for €50–100 not knowing it's a real analog drum machine."
+        },
+        {
+            "name": "Drumulator",
+            "brand": "E-mu",
+            "category": "drum machine",
+            "subtype": "digital drum machine",
+            "year_range": [
+                1983,
+                1985
+            ],
+            "architecture": "8-bit digital drum machine",
+            "market": {
+                "avg_market_price_eur": 750,
+                "good_deal_price_eur": 450,
+                "steal_price_eur": 250,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=E-mu%20Drumulator&condition=used",
+                    "https://reverb.com/marketplace?query=E-mu%20Drumulator&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=E-mu%20Drumulator&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 3,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "drum machine",
+                    "drum computer",
+                    "E-mu drums",
+                    "beat box"
+                ],
+                "search_keywords": [
+                    "Drumulator",
+                    "E-mu Drumulator",
+                    "Emu drum",
+                    "E-mu drum"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "lo-fi"
+                ]
+            },
+            "notes": "Lo-fi digital sound is prized in hip-hop and electronic; often sold as broken/unknown drum machine."
+        },
+        {
+            "name": "DMX",
+            "brand": "Oberheim",
+            "category": "drum machine",
+            "subtype": "digital drum machine",
+            "year_range": [
+                1981,
+                1984
+            ],
+            "architecture": "8-bit digital drum machine",
+            "market": {
+                "avg_market_price_eur": 2300,
+                "good_deal_price_eur": 1600,
+                "steal_price_eur": 1000,
+                "price_references": [
+                    "https://reverb.com/p/oberheim-dmx-8-voice-drum-machine",
+                    "https://reverb.com/marketplace?query=Oberheim%20DMX&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Oberheim%20DMX&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "drum machine",
+                    "drum computer",
+                    "Oberheim drums",
+                    "Schlagzeugcomputer"
+                ],
+                "search_keywords": [
+                    "Oberheim DMX",
+                    "DMX drum machine",
+                    "Oberheim drum"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "hip hop"
+                ]
+            },
+            "notes": "Hip-hop legend; 'DMX' name collision with rapper causes search noise but also means listings get missed."
+        },
+        {
+            "name": "LinnDrum",
+            "brand": "Linn Electronics",
+            "category": "drum machine",
+            "subtype": "digital drum machine",
+            "year_range": [
+                1982,
+                1985
+            ],
+            "architecture": "8/16-bit digital drum machine",
+            "market": {
+                "avg_market_price_eur": 2800,
+                "good_deal_price_eur": 2000,
+                "steal_price_eur": 1300,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Linn%20Electronics%20LinnDrum&condition=used",
+                    "https://reverb.com/marketplace?query=Linn%20Electronics%20LinnDrum&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Linn%20Electronics%20LinnDrum&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 4,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "drum machine",
+                    "drum computer",
+                    "Linn drums",
+                    "digital drums"
+                ],
+                "search_keywords": [
+                    "LinnDrum",
+                    "Linn drum",
+                    "LM-2",
+                    "Linn LM2"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "Linn"
+                ]
+            },
+            "notes": "Usually priced correctly; long-shot watch item for estate/studio clearances."
+        },
+        {
+            "name": "200A",
+            "brand": "Wurlitzer",
+            "category": "keyboard",
+            "subtype": "electromechanical piano",
+            "year_range": [
+                1969,
+                1982
+            ],
+            "architecture": "reed electric piano with built-in amplifier/speaker",
+            "market": {
+                "avg_market_price_eur": 2500,
+                "good_deal_price_eur": 1600,
+                "steal_price_eur": 900,
+                "price_references": [
+                    "https://reverb.com/p/wurlitzer-200a-64-key-electric-piano",
+                    "https://reverb.com/marketplace?query=Wurlitzer%20200A&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Wurlitzer%20200A&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 2,
+                "liquidity_score": 5,
+                "mispricing_frequency": 5
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "altes Klavier",
+                    "altes E-Piano",
+                    "Wurlitzer Klavier",
+                    "old piano",
+                    "electric piano",
+                    "vintage piano",
+                    "E-Piano"
+                ],
+                "search_keywords": [
+                    "Wurlitzer 200",
+                    "Wurlitzer 200A",
+                    "Wurlitzer electric piano",
+                    "Wurlitzer E-Piano",
+                    "Wurlitzer Piano"
+                ],
+                "missing_keywords": [
+                    "electric piano",
+                    "vintage"
+                ]
+            },
+            "notes": "Possibly the single best deal target on Kleinanzeigen. Commonly listed as 'altes E-Piano' or 'Wurlitzer Klavier' by non-musicians. Heavy, which drives local-pickup bargains."
+        },
+        {
+            "name": "Clavinet D6",
+            "brand": "Hohner",
+            "category": "keyboard",
+            "subtype": "electromechanical keyboard",
+            "year_range": [
+                1971,
+                1982
+            ],
+            "architecture": "hammer-and-pickup electromechanical string piano",
+            "market": {
+                "avg_market_price_eur": 2000,
+                "good_deal_price_eur": 1300,
+                "steal_price_eur": 750,
+                "price_references": [
+                    "https://reverb.com/p/hohner-clavinet-d6",
+                    "https://reverb.com/marketplace?query=Hohner%20Clavinet%20D6&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Hohner%20Clavinet%20D6&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 4,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Hohner Keyboard",
+                    "old keyboard",
+                    "Tastatur",
+                    "Cembalo",
+                    "vintage keyboard",
+                    "Hohner Klavier"
+                ],
+                "search_keywords": [
+                    "Clavinet",
+                    "Clavinet D6",
+                    "Clavinet E7",
+                    "Hohner Clavinet"
+                ],
+                "missing_keywords": [
+                    "vintage",
+                    "funk"
+                ]
+            },
+            "notes": "Iconic Stevie Wonder / funk sound. Sellers sometimes confuse with generic Hohner home keyboards."
+        },
+        {
+            "name": "CE-1 Chorus Ensemble",
+            "brand": "Boss",
+            "category": "effect",
+            "subtype": "analog chorus pedal",
+            "year_range": [
+                1976,
+                1984
+            ],
+            "architecture": "BBD analog chorus/vibrato",
+            "market": {
+                "avg_market_price_eur": 800,
+                "good_deal_price_eur": 520,
+                "steal_price_eur": 300,
+                "price_references": [
+                    "https://reverb.com/p/boss-ce-1-chorus-ensemble",
+                    "https://reverb.com/marketplace?query=Boss%20CE-1%20Chorus%20Ensemble&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Boss%20CE-1%20Chorus%20Ensemble&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Boss effect",
+                    "chorus pedal",
+                    "old Boss pedal",
+                    "guitar effect",
+                    "Effektgerät"
+                ],
+                "search_keywords": [
+                    "CE-1",
+                    "CE1",
+                    "Boss Chorus Ensemble",
+                    "Boss CE"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "vintage",
+                    "first Boss"
+                ]
+            },
+            "notes": "First Boss pedal ever made; large size makes some sellers price it as a generic old effect."
+        },
+        {
+            "name": "DM-2 Delay",
+            "brand": "Boss",
+            "category": "effect",
+            "subtype": "analog delay pedal",
+            "year_range": [
+                1981,
+                1984
+            ],
+            "architecture": "BBD analog delay",
+            "market": {
+                "avg_market_price_eur": 400,
+                "good_deal_price_eur": 260,
+                "steal_price_eur": 150,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Boss%20DM-2%20Delay&condition=used",
+                    "https://reverb.com/marketplace?query=Boss%20DM-2%20Delay&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Boss%20DM-2%20Delay&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 3,
+                "liquidity_score": 5,
+                "mispricing_frequency": 3
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "Boss delay",
+                    "delay pedal",
+                    "old Boss pedal",
+                    "guitar delay"
+                ],
+                "search_keywords": [
+                    "DM-2",
+                    "DM2",
+                    "Boss Delay",
+                    "Boss analog delay"
+                ],
+                "missing_keywords": [
+                    "analog",
+                    "BBD"
+                ]
+            },
+            "notes": "Common in pedal lot listings; sellers often don't distinguish between analog and digital Boss delays."
+        },
+        {
+            "name": "SDD-320 Dimension D",
+            "brand": "Roland",
+            "category": "effect",
+            "subtype": "rack analog chorus",
+            "year_range": [
+                1979,
+                1985
+            ],
+            "architecture": "BBD analog chorus (rack)",
+            "market": {
+                "avg_market_price_eur": 1300,
+                "good_deal_price_eur": 850,
+                "steal_price_eur": 550,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Roland%20SDD-320%20Dimension%20D&condition=used",
+                    "https://reverb.com/marketplace?query=Roland%20SDD-320%20Dimension%20D&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Roland%20SDD-320%20Dimension%20D&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 4,
+                "liquidity_score": 5,
+                "mispricing_frequency": 2
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "rack chorus",
+                    "studio rack",
+                    "Roland rack effect",
+                    "chorus unit",
+                    "Rackeffekt"
+                ],
+                "search_keywords": [
+                    "Dimension D",
+                    "SDD-320",
+                    "SDD320",
+                    "Roland Dimension"
+                ],
+                "missing_keywords": [
+                    "analog chorus",
+                    "rack"
+                ]
+            },
+            "notes": "Cult studio classic; generic 'rack chorus' or 'Rackeffekt' listings are the typical deal opportunity."
+        },
+        {
+            "name": "Mu-Tron III",
+            "brand": "Musitronics",
+            "category": "effect",
+            "subtype": "envelope filter pedal",
+            "year_range": [
+                1972,
+                1979
+            ],
+            "architecture": "analog envelope filter",
+            "market": {
+                "avg_market_price_eur": 1400,
+                "good_deal_price_eur": 1000,
+                "steal_price_eur": 650,
+                "price_references": [
+                    "https://reverb.com/marketplace?query=Musitronics%20Mu-Tron%20III&condition=used",
+                    "https://reverb.com/marketplace?query=Musitronics%20Mu-Tron%20III&show_sold=true",
+                    "https://www.ebay.de/sch/i.html?_nkw=Musitronics%20Mu-Tron%20III&_sop=12&rt=1&LH_Sold=1&LH_Complete=1"
+                ]
+            },
+            "opportunity": {
+                "rarity_score": 5,
+                "liquidity_score": 4,
+                "mispricing_frequency": 1
+            },
+            "deal_detection": {
+                "common_mislabels": [
+                    "envelope filter",
+                    "wah pedal",
+                    "funky pedal",
+                    "guitar filter",
+                    "Auto-Wah"
+                ],
+                "search_keywords": [
+                    "Mu-Tron",
+                    "Mutron",
+                    "Mu-Tron III",
+                    "Mutron III"
+                ],
+                "missing_keywords": [
+                    "envelope filter",
+                    "rare"
+                ]
+            },
+            "notes": "Very rare in Europe; long-shot item but enormous upside if found. Jerry Garcia / Bootsy Collins association."
+        }
+    ]
+}

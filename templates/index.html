@@ -6,6 +6,8 @@
 <title>Deal Scanner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
   :root {
     --bg: #0a0018;
@@ -555,6 +557,31 @@
     box-shadow: 0 0 8px rgba(0,240,255,.3);
   }
 
+  .deal-map {
+    height: 340px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin: 12px 0;
+    z-index: 1;
+  }
+  .deal-map .leaflet-popup-content-wrapper {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--glow-border);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    box-shadow: 0 0 20px rgba(107,33,168,.4);
+  }
+  .deal-map .leaflet-popup-tip { background: var(--surface); }
+  .deal-map .leaflet-popup-content { margin: 10px 14px; }
+  .deal-map .leaflet-popup-content a { color: var(--neon-cyan); text-decoration: none; }
+  .deal-map .leaflet-popup-content a:hover { text-decoration: underline; }
+  .map-popup-title { font-weight: 700; margin-bottom: 4px; }
+  .map-popup-price { font-family: var(--font-display); color: var(--neon-amber); font-size: 14px; }
+  .map-popup-item { padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .map-popup-item:last-child { border-bottom: none; }
+
   .view { display: none; }
   .view.active { display: block; }
 
@@ -595,6 +622,7 @@
 <div class="tabs">
   <div class="tab active" data-view="deals">Best Deals</div>
   <div class="tab" data-view="devices">By Device</div>
+  <div class="tab" data-view="gems">Hidden Gems</div>
 </div>
 
 <main>
@@ -674,6 +702,7 @@
 
 <!-- VIEW: BEST DEALS -->
 <div class="view active" id="view-deals">
+<div id="map-deals" class="deal-map"></div>
   {% set all_listings = [] %}
   {% for r in data.results %}
     {% for l in r.listings %}
@@ -693,7 +722,7 @@
       {% set ka = item.market.ka_avg_eur | int if item.market.ka_avg_eur else 0 %}
       {% set disc_mkt = ((mkt - p) / mkt * 100) | int if mkt else 0 %}
       {% set disc_ka = ((ka - p) / ka * 100) | int if ka else 0 %}
-      <div class="flat-listing {{ l.deal_rating }}" data-price="{{ p }}" data-profit="{{ l.est_profit_eur | int if l.est_profit_eur else 0 }}" data-disc-market="{{ disc_mkt }}" data-disc-ka="{{ disc_ka }}" data-date="{{ l.date }}" data-category="{{ item.category }}" data-brand="{{ item.brand }}" data-opportunity="{{ item.opportunity }}" data-device="{{ item.device_name }}" data-title="{{ l.title | lower }}">
+      <div class="flat-listing {{ l.deal_rating }}" data-price="{{ p }}" data-profit="{{ l.est_profit_eur | int if l.est_profit_eur else 0 }}" data-disc-market="{{ disc_mkt }}" data-disc-ka="{{ disc_ka }}" data-date="{{ l.date }}" data-category="{{ item.category }}" data-brand="{{ item.brand }}" data-opportunity="{{ item.opportunity }}" data-device="{{ item.device_name }}" data-title="{{ l.title | lower }}" data-plz="{{ l.location[:5] if l.location and l.location[:5].isdigit() else '' }}">
         {% if l.image_url %}
         <a href="{{ l.url }}" target="_blank" rel="noopener"><img class="listing-thumb" src="{{ l.image_url }}" alt="" loading="lazy"></a>
         {% else %}<div class="listing-thumb-placeholder"></div>{% endif %}
@@ -740,6 +769,7 @@
 
 <!-- VIEW: BY DEVICE -->
 <div class="view" id="view-devices">
+<div id="map-devices" class="deal-map"></div>
   {% set category_order = ['synthesizer', 'keyboard', 'drum machine', 'drum synth', 'effect', 'sampler', 'microphone', 'other'] %}
   {% set category_icons = {'synthesizer': '🎹', 'keyboard': '🎹', 'drum machine': '🥁', 'drum synth': '🥁', 'effect': '🎛', 'sampler': '💾', 'microphone': '🎤', 'other': '🔧'} %}
 
@@ -784,7 +814,7 @@
         {% set lka = r.market.ka_avg_eur | int if r.market.ka_avg_eur else 0 %}
         {% set ld_mkt = ((lmkt - lp) / lmkt * 100) | int if lmkt else 0 %}
         {% set ld_ka = ((lka - lp) / lka * 100) | int if lka else 0 %}
-        <div class="listing {{ l.deal_rating }}" data-price="{{ lp }}" data-date="{{ l.date }}" data-category="{{ r.category }}" data-brand="{{ r.brand }}" data-opportunity="{{ r.opportunity_score | default(0) }}" data-device="{{ r.device }}" data-title="{{ l.title | lower }}">
+        <div class="listing {{ l.deal_rating }}" data-price="{{ lp }}" data-date="{{ l.date }}" data-category="{{ r.category }}" data-brand="{{ r.brand }}" data-opportunity="{{ r.opportunity_score | default(0) }}" data-device="{{ r.device }}" data-title="{{ l.title | lower }}" data-plz="{{ l.location[:5] if l.location and l.location[:5].isdigit() else '' }}">
           {% if l.image_url %}
           <a href="{{ l.url }}" target="_blank" rel="noopener"><img class="listing-thumb" src="{{ l.image_url }}" alt="" loading="lazy"></a>
           {% else %}<div class="listing-thumb-placeholder"></div>{% endif %}
@@ -828,6 +858,80 @@
   </div>
   {% endif %}
   {% endfor %}
+</div>
+
+<!-- VIEW: HIDDEN GEMS -->
+<div class="view" id="view-gems">
+  {% if not analysis or not analysis.results %}
+    <div class="empty">No generic scan analysis found. Run <code>python llm_analyzer.py</code> first.</div>
+  {% else %}
+  <div style="display:flex;align-items:center;gap:16px;padding:14px 0 6px;flex-wrap:wrap">
+    <span style="font-family:var(--font-display);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text2)">Analysis</span>
+    <select id="analysis-picker" onchange="let u=new URL(location);u.searchParams.set('analysis',this.value);location=u" style="background:var(--surface);color:var(--neon-cyan);border:1px solid var(--glow-border);padding:6px 12px;border-radius:4px;font-family:var(--font-body);font-size:11px;cursor:pointer">
+      {% for a in analyses %}
+      <option value="{{ a }}" {{ 'selected' if a == current_analysis else '' }}>{{ a }}</option>
+      {% endfor %}
+    </select>
+    <span style="font-size:11px;color:var(--text2)">{{ analysis.total_analyzed }} listings analyzed &middot; {{ analysis.model | default('?') }}{% if analysis.api_usage %} &middot; ${{ "%.4f" % analysis.api_usage.cost_usd }} USD ({{ "{:,}".format(analysis.api_usage.total_tokens) }} tokens){% endif %}</span>
+  </div>
+  <div id="map-gems" class="deal-map"></div>
+  <div class="device-section" style="margin-top:12px">
+    <div class="device-listings">
+      {% for item in analysis.results | sort(attribute='deal_score', reverse=true) %}
+      {% set score = item.deal_score | default(0) %}
+      {% set rating = item.deal_rating | default('fair') %}
+      <div class="flat-listing {{ rating }}" data-price="{{ item.asking_price_eur | int if item.asking_price_eur else 0 }}" data-title="{{ (item.title or '') | lower }}" data-plz="{{ item.location[:5] if item.location and item.location[:5].isdigit() else '' }}">
+        {% if item.image_path or item.image_url %}
+        <a href="{{ item.url }}" target="_blank" rel="noopener"><img class="listing-thumb" src="{{ item.image_url if item.image_url else '' }}" alt="" loading="lazy"></a>
+        {% else %}<div class="listing-thumb-placeholder"></div>{% endif %}
+        <div class="flat-device">
+          {{ item.identified_device | default('Unknown') }}
+          <span class="badge {% if rating == 'steal' %}badge-steal{% elif rating == 'good_deal' %}badge-good{% elif rating == 'overpriced' %}badge-market{% else %}badge-market{% endif %}">
+            {{ rating | replace('_', ' ') }}
+          </span>
+          {% if item.confidence == 'low' %}<span class="badge badge-market" style="color:var(--neon-amber);border-color:rgba(255,215,0,.25)">low conf</span>{% endif %}
+        </div>
+        <div>
+          <div class="listing-title">
+            <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title | default('No title') }}</a>
+          </div>
+          <div class="listing-meta">
+            {% if item.location %}<span>{{ item.location }}</span>{% endif %}
+            {% if item.date %}<span>{{ item.date }}</span>{% endif %}
+            <span>{{ item.source_query | default('') }}</span>
+            {% if item.condition_notes %}<span>{{ item.condition_notes[:100] }}{% if item.condition_notes|length > 100 %}&hellip;{% endif %}</span>{% endif %}
+          </div>
+          {% if item.reasoning %}
+          <div class="listing-meta" style="margin-top:2px;font-style:italic;opacity:.7">
+            <span>{{ item.reasoning[:150] }}{% if item.reasoning|length > 150 %}&hellip;{% endif %}</span>
+          </div>
+          {% endif %}
+        </div>
+        <div class="listing-right">
+          <div class="listing-price">{{ item.asking_price_eur | int if item.asking_price_eur else '?' }}&thinsp;&euro;</div>
+          <div class="listing-avg">mkt ~{{ item.estimated_market_value_eur | int if item.estimated_market_value_eur else '?' }}&thinsp;&euro;
+            {% set ask = item.asking_price_eur | default(0) | int %}
+            {% set mkt = item.estimated_market_value_eur | default(0) | int %}
+            {% if mkt > 0 and ask > 0 and ask < mkt %}
+              <span class="disc-pct disc-mkt">-{{ ((mkt - ask) / mkt * 100) | int }}%</span>
+            {% endif %}
+          </div>
+          <div style="font-family:var(--font-display);font-size:11px;margin-top:4px">
+            <span style="color:{% if score >= 70 %}var(--steal){% elif score >= 50 %}var(--good){% elif score >= 30 %}var(--neon-cyan){% else %}var(--text2){% endif %};text-shadow:0 0 8px {% if score >= 70 %}var(--steal-glow){% elif score >= 50 %}var(--good-glow){% else %}transparent{% endif %}">
+              SCORE {{ score }}
+            </span>
+          </div>
+          <div class="ref-knobs">
+            {% set dev_q = (item.identified_device | default('')) | urlencode %}
+            <a class="knob" href="https://www.kleinanzeigen.de/s-preis::/{{ (item.identified_device | default('')) | lower | replace(' ', '-') }}/k0" target="_blank" title="Kleinanzeigen search: {{ item.identified_device | default('') }}" style="border-color:var(--neon-green);color:var(--neon-green)">K</a>
+            <a class="knob" href="https://www.ebay.de/sch/i.html?_nkw={{ dev_q }}&_sop=12&rt=1&LH_Sold=1&LH_Complete=1" target="_blank" title="eBay sold listings: {{ item.identified_device | default('') }}">E</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 </div>
 
 </main>
@@ -971,6 +1075,162 @@ function applySorting() {
   items.forEach(el => container.appendChild(el));
 }
 sortPicker.addEventListener('change', applySorting);
+
+// ---- MAP ----
+const PLZ_COORDS = {{ plz_coords | tojson }};
+const RATING_COLORS = {
+  'steal': '#ff2d95',
+  'good_deal': '#39ff14',
+  'good': '#39ff14',
+  'market_price': '#00f0ff',
+  'fair': '#00f0ff',
+  'above_market': '#8a7baa',
+  'overpriced': '#8a7baa',
+  'not_interesting': '#8a7baa'
+};
+
+function createDealMap(containerId, viewId) {
+  const container = document.getElementById(containerId);
+  if (!container) return null;
+
+  const map = L.map(containerId, {
+    zoomControl: true,
+    attributionControl: false
+  }).setView([51.1657, 10.4515], 6);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  return map;
+}
+
+function buildMapPins(map, viewId) {
+  if (!map) return;
+
+  // Remove existing markers
+  map.eachLayer(l => { if (l instanceof L.CircleMarker) map.removeLayer(l); });
+
+  const view = document.getElementById(viewId);
+  if (!view) return;
+
+  // Group visible listings by PLZ
+  const byPlz = {};
+  view.querySelectorAll('[data-plz]').forEach(el => {
+    const plz = el.dataset.plz;
+    if (!plz || !PLZ_COORDS[plz] || el.style.display === 'none') return;
+
+    // Extract listing info from the DOM
+    const titleEl = el.querySelector('.listing-title a');
+    const priceEl = el.querySelector('.listing-price');
+    const deviceEl = el.querySelector('.flat-device');
+    const title = titleEl ? titleEl.textContent.trim() : '';
+    const url = titleEl ? titleEl.href : '';
+    const price = priceEl ? priceEl.textContent.trim() : '';
+    const device = deviceEl ? deviceEl.childNodes[0].textContent.trim() : '';
+
+    // Determine rating from class list
+    let rating = 'fair';
+    for (const cls of el.classList) {
+      if (RATING_COLORS[cls]) { rating = cls; break; }
+    }
+
+    // Score (gems view)
+    const scoreEl = el.querySelector('[style*="SCORE"]') || el.querySelector('.listing-right div:last-child span');
+    let score = '';
+    if (scoreEl && scoreEl.textContent.includes('SCORE')) score = scoreEl.textContent.trim();
+
+    if (!byPlz[plz]) byPlz[plz] = [];
+    byPlz[plz].push({ title, url, price, device, rating, score, el });
+  });
+
+  const markers = [];
+  for (const [plz, items] of Object.entries(byPlz)) {
+    const [lat, lng] = PLZ_COORDS[plz];
+
+    // Best rating in this PLZ determines pin color
+    const bestRating = items.reduce((best, item) => {
+      const order = ['steal', 'good_deal', 'good', 'market_price', 'fair', 'above_market', 'overpriced', 'not_interesting'];
+      return order.indexOf(item.rating) < order.indexOf(best) ? item.rating : best;
+    }, 'not_interesting');
+
+    const color = RATING_COLORS[bestRating] || '#8a7baa';
+
+    const marker = L.circleMarker([lat, lng], {
+      radius: Math.min(6 + items.length * 2, 14),
+      fillColor: color,
+      color: color,
+      weight: 2,
+      opacity: 0.9,
+      fillOpacity: 0.5
+    }).addTo(map);
+
+    // Build popup HTML
+    const maxShow = 5;
+    let html = `<div style="max-height:240px;overflow-y:auto">`;
+    html += `<div style="font-family:var(--font-display);font-size:9px;color:var(--text2);margin-bottom:6px">${plz} &middot; ${items.length} listing${items.length > 1 ? 's' : ''}</div>`;
+    items.slice(0, maxShow).forEach(item => {
+      const ratingColor = RATING_COLORS[item.rating] || '#8a7baa';
+      html += `<div class="map-popup-item">`;
+      if (item.device) html += `<div style="font-size:10px;color:${ratingColor};font-weight:700">${item.device}</div>`;
+      html += `<div class="map-popup-title"><a href="${item.url}" target="_blank">${item.title.substring(0, 60)}${item.title.length > 60 ? '…' : ''}</a></div>`;
+      html += `<span class="map-popup-price">${item.price}</span>`;
+      if (item.score) html += ` <span style="font-size:10px;color:${ratingColor}">${item.score}</span>`;
+      html += `</div>`;
+    });
+    if (items.length > maxShow) html += `<div style="font-size:10px;color:var(--text2);padding-top:4px">+${items.length - maxShow} more</div>`;
+    html += `</div>`;
+
+    marker.bindPopup(html, { maxWidth: 320, minWidth: 200 });
+    markers.push(marker);
+  }
+
+  // Fit bounds if we have markers
+  if (markers.length > 0) {
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.1));
+  }
+
+  return markers;
+}
+
+// Initialize maps (lazy — only when tab becomes visible)
+const maps = {};
+
+function initMapForView(viewName) {
+  const mapId = 'map-' + viewName;
+  const viewId = 'view-' + viewName;
+  if (!document.getElementById(mapId)) return;
+  if (maps[viewName]) {
+    maps[viewName].invalidateSize();
+    buildMapPins(maps[viewName], viewId);
+    return;
+  }
+  maps[viewName] = createDealMap(mapId, viewId);
+  buildMapPins(maps[viewName], viewId);
+}
+
+// Init map for the active view on load
+initMapForView('deals');
+
+// Re-init map on tab switch
+const origTabClick = document.querySelectorAll('.tab');
+origTabClick.forEach(tab => {
+  tab.addEventListener('click', () => {
+    setTimeout(() => initMapForView(tab.dataset.view), 50);
+  });
+});
+
+// Refresh map pins when filters change
+const origApplyFilters = applyFilters;
+applyFilters = function() {
+  origApplyFilters();
+  const activeView = document.querySelector('.tab.active');
+  if (activeView && maps[activeView.dataset.view]) {
+    buildMapPins(maps[activeView.dataset.view], 'view-' + activeView.dataset.view);
+  }
+};
 </script>
 </body>
 </html>

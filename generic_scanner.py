@@ -26,8 +26,8 @@ from scanner import (
     NAV_TIMEOUT_MS,
     PAUSE_SECONDS,
     fetch_page,
-    is_too_old,
     load_schema,
+    parse_listing_date,
     parse_listings,
 )
 
@@ -36,25 +36,58 @@ load_dotenv(override=True)
 logger = logging.getLogger(__name__)
 
 GENERIC_MAX_PRICE_EUR = 500
+GENERIC_MAX_AGE_DAYS = 5
+SCRAPE_CONCURRENCY = 5  # parallel Bright Data sessions
+
+
+def is_too_old_generic(date_str: str | None) -> bool:
+    """Filter listings older than GENERIC_MAX_AGE_DAYS."""
+    if not date_str:
+        return True
+    d = parse_listing_date(date_str)
+    if d is None:
+        return True
+    return (datetime.now() - d).days > GENERIC_MAX_AGE_DAYS
 
 GERMAN_GENERIC_TERMS = [
-    "altes Keyboard",
     "alter Synthesizer",
     "vintage Synth",
     "80er Keyboard",
     "analoger Synthesizer",
-    "altes Mischpult",
     "Drummachine",
     "altes Effektgerät",
-    "Studiomikrofon vintage",
-    "altes Klavier elektrisch",
 ]
+
+# Queries that return mostly junk (consumer gear, acoustic pianos, toys, non-music items)
+QUERY_BLOCKLIST = {
+    "altes klavier", "altes klavier elektrisch", "altes keyboard", "altes mischpult",
+    "altes e-piano", "alter synthesizer",
+    "tastatur", "schlagzeug", "workstation", "e-piano", "stage piano", "home keyboard",
+    "beat box", "drum kit", "drum pads", "digital drums", "electronic drums",
+    "midi keyboard", "wah pedal", "stage keyboard",
+    "akai keyboard", "korg keyboard", "yamaha keyboard", "roland piano",
+    "kawai keyboard", "hohner klavier", "hohner keyboard",
+    "guitar effect", "guitar delay", "guitar echo", "guitar distortion", "guitar filter",
+    "studio mic", "studio microphone", "studio condenser", "recording mic",
+    "radio microphone", "broadcast mic", "sennheiser microphone", "shure mic",
+    "neumann microphone", "studiomikrofon vintage",
+    "cembalo", "electric piano", "fender piano", "rhodes keyboard", "rhodes piano",
+    "old keyboard", "old piano", "old organ", "old pedal",
+    "old electric piano", "old electronic drums", "old drum pads",
+    "old kawai", "old korg", "old korg piano", "old moog", "old mxr pedal",
+    "old boss pedal", "old delay pedal", "old effect pedal",
+    "old rack sampler", "old rack synth", "old sampler", "old stage piano",
+    "old studio effect", "old studio keyboard", "old synth",
+    "old tape machine", "old workstation", "old yamaha",
+    "small moog", "small synth", "patch synth", "polyphonic keyboard",
+    "hohner organ", "wurlitzer klavier",
+}
 
 
 def generate_queries(devices: list[dict]) -> list[str]:
     """Extract all common_mislabels from devices, deduplicate, add German generic terms.
 
-    Returns a sorted list of unique query strings.
+    Returns a sorted list of unique query strings, filtered by blocklist.
     """
     mislabels = set()
     for device in devices:
@@ -63,15 +96,18 @@ def generate_queries(devices: list[dict]) -> list[str]:
 
     mislabel_count = len(mislabels)
 
-    # Add German generic terms (normalized)
     for term in GERMAN_GENERIC_TERMS:
         mislabels.add(term.lower().strip())
 
+    # Remove junk queries
+    mislabels -= QUERY_BLOCKLIST
+
     queries = sorted(mislabels)
     logger.info(
-        "%d unique queries generated from %d mislabels + German generics",
+        "%d unique queries generated from %d mislabels + German generics (%d blocked)",
         len(queries),
         mislabel_count,
+        len(QUERY_BLOCKLIST),
     )
     return queries
 
@@ -107,7 +143,7 @@ async def search_query(pw, endpoint: str, query: str) -> list[dict]:
     # Filter: old listings, no photo, over budget, no price
     filtered = []
     for listing in raw_listings:
-        if is_too_old(listing.get("date")):
+        if is_too_old_generic(listing.get("date")):
             continue
         if not listing.get("image_url"):
             continue
@@ -220,11 +256,11 @@ async def scrape_detail_page(pw, endpoint: str, listing_url: str) -> dict | None
             match = re.match(r"data:(image/[^;]+);base64,(.+)", image_data, re.DOTALL)
             if match:
                 image_content_type = match.group(1)
-                image_b64 = match.group(2)
+                image_bytes = base64.b64decode(match.group(2))
             else:
-                # Fallback: treat entire string as base64, assume jpeg
+                # Fallback: treat entire string as raw base64, assume jpeg
                 image_content_type = "image/jpeg"
-                image_b64 = image_data
+                image_bytes = base64.b64decode(image_data)
 
             # --- Extract full description ---
             full_description = ""
@@ -249,10 +285,55 @@ async def scrape_detail_page(pw, endpoint: str, listing_url: str) -> dict | None
             if not full_description:
                 logger.warning("No description found on detail page: %s", listing_url)
 
+            # --- Extract seller name ---
+            seller_name = ""
+            seller_selectors = [
+                "#viewad-contact .iconcard-title",
+                "[data-testid='viewad-contact'] .iconcard-title",
+                "#viewad-contact .userprofile-vip a",
+                ".ad-contact .userprofile-vip a",
+                "#viewad-contact a[href*='/s-bestandsliste']",
+            ]
+            for selector in seller_selectors:
+                el = await page.query_selector(selector)
+                if el:
+                    seller_name = (await el.inner_text()).strip()
+                    if seller_name:
+                        break
+            if not seller_name:
+                # Fallback: try JS extraction
+                seller_name = await page.evaluate("""() => {
+                    const el = document.querySelector('#viewad-contact');
+                    if (!el) return '';
+                    const title = el.querySelector('.iconcard-title');
+                    if (title) return title.innerText.trim();
+                    const link = el.querySelector('a');
+                    if (link) return link.innerText.trim();
+                    return '';
+                }""") or ""
+
+            # --- Scam flags ---
+            scam_flags = []
+            name_lower = seller_name.lower().strip()
+            if name_lower in ("privat", "private", "privater nutzer", ""):
+                scam_flags.append("anonymous_seller")
+            # Check account age / number of ads if available
+            active_since = await page.evaluate("""() => {
+                const el = document.querySelector('#viewad-contact .iconcard-subtitle, [data-testid=\\"viewad-contact\\"] .textcontent');
+                return el ? el.innerText.trim() : '';
+            }""") or ""
+            if active_since:
+                import re as _re
+                year_match = _re.search(r'20(\\d{2})', active_since)
+                if year_match and int('20' + year_match.group(1)) >= 2026:
+                    scam_flags.append("new_account")
+
             return {
-                "image_base64": image_b64,
+                "image_bytes": image_bytes,
                 "full_description": full_description,
                 "image_content_type": image_content_type,
+                "seller_name": seller_name,
+                "scam_flags": scam_flags,
             }
 
         except Exception as e:
@@ -291,61 +372,103 @@ async def main():
     queries = generate_queries(devices)
 
     limit = None
-    if len(sys.argv) > 1:
-        limit = int(sys.argv[1])
+    query_filter = None
+    search_only = "--search-only" in sys.argv
+    for arg in sys.argv[1:]:
+        if arg.startswith("--queries="):
+            query_filter = [q.strip().lower() for q in arg.split("=", 1)[1].split(",")]
+        elif arg == "--search-only":
+            continue
+        else:
+            limit = int(arg)
+
+    if query_filter:
+        queries = [q for q in queries if q in query_filter]
+    elif limit:
         queries = queries[:limit]
 
-    print(f"Searching {len(queries)} generic queries via Bright Data Scraping Browser...")
-
-    all_listings = []
+    print(f"Searching {len(queries)} generic queries via Bright Data Scraping Browser (concurrency: {SCRAPE_CONCURRENCY})...")
 
     from playwright.async_api import async_playwright
 
-    async with async_playwright() as pw:
-        for i, query in enumerate(queries):
-            print(f"[{i + 1}/{len(queries)}] Searching: {query}")
+    # --- Phase 1: Parallel search queries ---
+    sem = asyncio.Semaphore(SCRAPE_CONCURRENCY)
+    search_done = 0
 
+    async def run_search(pw, query: str) -> list[dict]:
+        nonlocal search_done
+        async with sem:
             results = await search_query(pw, endpoint, query)
-            all_listings.extend(results)
+            search_done += 1
+            print(f"[{search_done}/{len(queries)}] Searched: {query} -> {len(results)} results")
+            return results
 
-            if i < len(queries) - 1:
-                await asyncio.sleep(PAUSE_SECONDS)
+    async with async_playwright() as pw:
+        tasks = [run_search(pw, q) for q in queries]
+        search_results = await asyncio.gather(*tasks)
+
+    all_listings = [listing for batch in search_results for listing in batch]
 
     before_dedup = len(all_listings)
     listings = deduplicate_listings(all_listings)
 
-    # --- Phase 2: Detail page scraping for hero image + full description ---
-    print(f"\nScraping detail pages for {len(listings)} listings...")
-
-    enriched = []
-    skipped = 0
-
-    async with async_playwright() as pw:
-        for i, listing in enumerate(listings):
-            title_preview = listing.get("title", "")[:50]
-            print(f"[{i + 1}/{len(listings)}] Scraping detail: {title_preview}")
-
-            detail = await scrape_detail_page(pw, endpoint, listing["url"])
-
-            if detail is None:
-                skipped += 1
-                logger.info("Skipped (no image): %s", listing.get("title", ""))
-                continue
-
-            # Merge detail data into listing
-            listing["image_base64"] = detail["image_base64"]
-            listing["full_description"] = detail["full_description"]
-            listing["image_content_type"] = detail["image_content_type"]
-            enriched.append(listing)
-
-            if i < len(listings) - 1:
-                await asyncio.sleep(PAUSE_SECONDS)
-
-    print(f"\n{len(enriched)} listings enriched with detail page data, {skipped} skipped (no image)")
-
-    # Save results
+    # Prepare output directories
     output_dir = Path("results")
     output_dir.mkdir(exist_ok=True)
+
+    if search_only:
+        enriched = listings
+        skipped = 0
+        print(f"\n--search-only: skipping detail page scraping, {len(listings)} listings from search results")
+    else:
+        # --- Phase 2: Parallel detail page scraping ---
+        print(f"\nScraping detail pages for {len(listings)} listings (concurrency: {SCRAPE_CONCURRENCY})...")
+
+        images_dir = output_dir / "images"
+        images_dir.mkdir(exist_ok=True)
+
+        detail_done = 0
+        detail_sem = asyncio.Semaphore(SCRAPE_CONCURRENCY)
+
+        async def run_detail(pw, listing: dict) -> dict | None:
+            nonlocal detail_done
+            async with detail_sem:
+                detail = await scrape_detail_page(pw, endpoint, listing["url"])
+                detail_done += 1
+                title_preview = (listing.get("title") or "")[:50]
+
+                if detail is None:
+                    print(f"[{detail_done}/{len(listings)}] Skip (no image): {title_preview}")
+                    return None
+
+                # Save image to disk
+                ext = detail["image_content_type"].split("/")[-1]
+                if ext == "jpeg":
+                    ext = "jpg"
+                url_id = listing["url"].rstrip("/").split("/")[-1].split("-")[0]
+                image_filename = f"{url_id}.{ext}"
+                image_path = images_dir / image_filename
+                image_path.write_bytes(detail["image_bytes"])
+
+                listing["image_path"] = str(image_path)
+                listing["full_description"] = detail["full_description"]
+                listing["image_content_type"] = detail["image_content_type"]
+                listing["seller_name"] = detail.get("seller_name", "")
+                listing["scam_flags"] = detail.get("scam_flags", [])
+                flags = f" [SCAM: {', '.join(detail['scam_flags'])}]" if detail.get("scam_flags") else ""
+                print(f"[{detail_done}/{len(listings)}] Enriched: {title_preview}{flags}")
+                return listing
+
+        async with async_playwright() as pw:
+            tasks = [run_detail(pw, listing) for listing in listings]
+            detail_results = await asyncio.gather(*tasks)
+
+        enriched = [r for r in detail_results if r is not None]
+        skipped = len(listings) - len(enriched)
+
+        print(f"\n{len(enriched)} listings enriched with detail page data, {skipped} skipped (no image)")
+
+    # Save results
     scrape_date = datetime.now().isoformat(timespec="seconds")
     output_path = output_dir / f"generic_scrape_{datetime.now().strftime('%Y-%m-%d_%H%M')}.json"
 
